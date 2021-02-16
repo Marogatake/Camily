@@ -4,9 +4,6 @@ body{
 a{
   text-decoration: none;
 }
-.wrapper{
-  min-width: 550px;
-}
 header{
   opacity: 0.8;
   background-color: #ffffff;
@@ -839,7 +836,7 @@ main{
     width: 37.66vw;
   }
   .product__top-image ul li:nth-child(2){
-    left: 25vw;
+    left: 25%;
   }
   .product__top-image ul li img{
     width: 100%;
@@ -848,7 +845,7 @@ main{
     order: 3;
     width: 65%;
     height: auto;
-    min-height: 36vw;
+    min-height: 32vw;
     bottom: 0;
     margin-left: 25vw;
   }
