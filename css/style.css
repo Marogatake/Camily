@@ -1,6 +1,9 @@
 body{
   overflow-x: hidden;
-  /* min-width: 550px; */
+}
+.wrapper{
+  min-width: 550px;
+  margin: 0 auto;
 }
 a{
   text-decoration: none;
