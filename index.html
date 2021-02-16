@@ -20,7 +20,7 @@
 </head>
 <body>
   <header>
-    <div class="header__warp">
+    <div class="header__wrap">
       <div class="header__left">
         <h1>
           <a href="">
@@ -64,7 +64,7 @@
   </header>
   <main>
     <section class="mv">
-      <div class="mv__warp">
+      <div class="mv__wrap">
         <div class="mv__left">
           <div class="mv__left-text">
             <h2>「大変」<span>が</span>「楽しい」<span>に。</span></h2>
@@ -88,13 +88,13 @@
       </div>
     </section>
     <section class="news">
-      <div class="news__warp">
+      <div class="news__wrap">
         <h2>NEWS</h2>
         <dl>
           <div class="news__content">
             <a href="#">
               <dt>2021.1.25</dt>
-              <dd>家族のタウンライフに新たな楽しみと快適を提供</dd>
+              <dd is-text-overflow>家族のタウンライフに新たな楽しみと快適を提供</dd>
             </a>
           </div>
           <!-- 一行バージョンはここから下の「ここまで」を削除したものになります -->
@@ -109,7 +109,7 @@
       </div>
     </section>
     <section class="story">
-      <div class="story__warp">
+      <div class="story__wrap">
         <div class="story__left">
           <div class="story__left-small" id="before">
             <img src="images/story01.png" alt="">
@@ -171,7 +171,7 @@
       </div>
     </section>
     <section class="scene">
-      <div class="scene__warp">
+      <div class="scene__wrap">
         <h2 id="fadein_title_scene">SCENE</h2>
         <p id="fadein_text_scene">
           吾輩は猫である。<br>
@@ -183,7 +183,7 @@
       </div>
     </section>
     <section class="product">
-      <div class="product__warp">
+      <div class="product__wrap">
         <h2 id="fadein_title_product">PRODUCT</h2>
         <div class="product__top">
           <div class="product__top-image">
@@ -320,13 +320,55 @@
           <ul class="product__top-button">
             <!-- 商品数に合わせて以下の書き換え(以下は商品数 7のときの例) -->
             <li id="prev"><</li>
-            <li id="num1">1</li>
-            <li id="num2">2</li>
-            <li id="num3">3</li>
-            <li id="num4">4</li>
-            <li id="num5">5</li>
-            <li id="num6">6</li>
-            <li id="num7">7</li>
+            <li id="num1">
+              <div class="chart-meter"></div>
+              <div class="chart-submeter"></div>
+              <div class="chart-value">
+                1
+              </div>
+            </li>
+            <li id="num2">
+              <div class="chart-meter"></div>
+              <div class="chart-submeter"></div>
+              <div class="chart-value">
+                2
+              </div>
+            </li>
+            <li id="num3">
+              <div class="chart-meter"></div>
+              <div class="chart-submeter"></div>
+              <div class="chart-value">
+                3
+              </div>
+            </li>
+            <li id="num4">
+              <div class="chart-meter"></div>
+              <div class="chart-submeter"></div>
+              <div class="chart-value">
+                4
+              </div>
+            </li>
+            <li id="num5">
+              <div class="chart-meter"></div>
+              <div class="chart-submeter"></div>
+              <div class="chart-value">
+                5
+              </div>
+            </li>
+            <li id="num6">
+              <div class="chart-meter"></div>
+              <div class="chart-submeter"></div>
+              <div class="chart-value">
+                6
+              </div>
+            </li>
+            <li id="num7">
+              <div class="chart-meter"></div>
+              <div class="chart-submeter"></div>
+              <div class="chart-value">
+                7
+              </div>
+            </li>
             <li id="next">></li>
           </ul>
         </div>
@@ -337,12 +379,15 @@
           </div>
           <div class="product__bottom-right">
             <img src="images/product03.png" alt="">
+              <div class="product__bottom-text">
+                  <p>駐輪時はコンパクトに折りたたむ事ができます</p>
+                </div>
           </div>
         </div>
       </div>
     </section>
     <section class="assessment">
-      <div class="assessment__warp">
+      <div class="assessment__wrap">
         <div class="assessment__content">
           <div class="assessment__content-text">
             <h2  id="fadein_title_assessment">ASSESSMENT</h2>
@@ -378,7 +423,7 @@
       </div>
     </section>
     <section class="faq">
-      <div class="faq__warp">
+      <div class="faq__wrap">
         <h2 id="fadein_title_faq">FAQ</h2>
         <ul>
           <li>
@@ -386,8 +431,8 @@
             <p>吾輩は猫である。<br>
               名前はまだ無い。<br>
               どこで生れたかとんと見当がつかぬ。<br>
-              何でも薄暗いじめじめした所でニヤーニヤー
-              泣いてゐた事だけは記憶してゐる。吾輩はこ
+              何でも薄暗いじめじめした所でニヤーニヤー<br>
+              泣いてゐた事だけは記憶してゐる。吾輩はこ<br>
               こで始めて人間といふものを見た。<br>
               テキストテキストテキストテキストテキストテキスト
             </p>
@@ -418,7 +463,7 @@
     </section>
   </main>
   <footer>
-    <div class="footer__warp">
+    <div class="footer__wrap">
       <img src="images/footerlogo.png" alt="">
       <span class="footer__text">about us</span>
       <span class="footer__copy">copyright ©️ All Right Reserved. </span>

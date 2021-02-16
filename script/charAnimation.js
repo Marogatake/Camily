@@ -45,7 +45,7 @@ $(function(){
           },300);
           setTimeout(function(){
             $('#before').animate({'width':'55.6%'},1300);
-            $('#after').animate({'width':'100%'},1300);
+            $('#after').animate({'width':'80%'},1300);
           },800)
         }else if (winWidth <= 900) {
           setTimeout(function(){

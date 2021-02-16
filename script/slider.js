@@ -37,6 +37,7 @@ $(function () {
   boxwidth = sliderBox.width(),
   interval = setInterval(function(){NextSlider();}, 10000),
   cancelFlag = 0;
+  countdownProduct();
   productTextHeight = $('.product__top-text').height();
   $(window).resize(function() {
     productTextHeight = $('.product__top-text').height();
@@ -237,9 +238,24 @@ $(function () {
    }
  }
 
+  function countdownProduct() {
+   centerElementNumber = $('#product_center').attr('class').replace('slider','');
+   $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
+   setTimeout(function(){
+     $('.product__top-button li').eq(centerElementNumber).css({'background':'linear-gradient(90deg,#110603 0%,#110603 50%,#e6e7e9 50%,#e6e7e9 100%'});
+     $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,#110603 50%,#110603 100%');
+   },4500);
+   setTimeout(function(){
+     $('.product__top-button li').eq(centerElementNumber).css({'background':'linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%'});
+     $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(0deg)','transition':'0s'});
+     $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
+   },9000);
+ }
+
   function IntervalSlide() {
    if (cancelFlag == 0) {
      cancelFlag =1;
+     countdownProduct();
      interval = setInterval(function(){NextSlider();}, 9000);
      setTimeout(function(){cancelFlag =0;}, 1400);
    }
