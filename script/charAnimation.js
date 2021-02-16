@@ -8,15 +8,6 @@ $(function(){
   $(window).resize(function() {
     winWidth = $(window).width(),
     winHeight = $(window).height();
-    if (winWidth < 900 && reloadFlag ==0 ) {
-      // location.reload();
-      reloadFlag = 1;
-      subReloadFlag = 1;
-    }
-    if(900 < winWidth && subReloadFlag ==1){
-      reloadFlag = 0;
-      subReloadFlag = 0;
-    }
   });
 
   storyTitle = $('#fadein_title_story'),

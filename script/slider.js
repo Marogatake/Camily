@@ -30,7 +30,7 @@ $(function () {
     $('#slide_items').animate({'marginLeft': - flowWidth},
     25000, 'linear',
     function(){$('#slide_items').css('marginLeft','0');});
-  }, 300);
+  }, 600);
 
   // .productの動き
   var sliderBox = $('#slider'),

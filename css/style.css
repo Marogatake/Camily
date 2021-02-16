@@ -243,6 +243,7 @@ main{
   .news__warp{
     width: 80%;
   }
+}
 @media screen and (max-width: 765px){
   .mv__warp{
     width: 100%;
@@ -632,16 +633,16 @@ main{
   width: 22.89vw;
 }
 .product__top-image ul li:nth-child(1){
-  left: -12.8vw;
+  left: -12.8%;
 }
 .product__top-image ul li:nth-child(2){
-  left: 19.83vw;
+  left: 19.83%;
 }
 .product__top-image ul li:nth-child(3){
-  left: 89vw;
+  left: 89%;
 }
 .product__top-image ul li:nth-child(n+4){
-  left: 100vw;
+  left: 100%;
 }
 .product__top-image ul li img{
   width: 100%;
