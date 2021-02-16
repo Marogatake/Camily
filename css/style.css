@@ -1,6 +1,6 @@
 body{
   overflow-x: hidden;
-  min-width: 550px;
+  /* min-width: 550px; */
 }
 a{
   text-decoration: none;
