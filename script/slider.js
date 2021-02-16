@@ -37,6 +37,10 @@ $(function () {
   boxwidth = sliderBox.width(),
   interval = setInterval(function(){NextSlider();}, 10000),
   cancelFlag = 0;
+  productTextHeight = $('.product__top-text').height();
+  $(window).resize(function() {
+    productTextHeight = $('.product__top-text').height();
+  });
 
   $(window).bind("focus", function(){IntervalSlide();});
   $(window).bind("blur", function(){clearInterval(interval)});
@@ -203,6 +207,7 @@ $(function () {
 
   function textChange(nextFolded) {
     nextHTML = nextFolded.html();
+    $('.product__top-text').css('min-height', productTextHeight);
     $('.product__top-text :nth-child(n)').fadeOut(600);
     setTimeout(function(){
       $('.product__top-text').html('').html(nextHTML);
