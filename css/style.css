@@ -243,9 +243,7 @@ main{
   .news__warp{
     width: 80%;
   }
-}
 @media screen and (max-width: 765px){
-  /* mv */
   .mv__warp{
     width: 100%;
     height: 100%;
@@ -280,6 +278,9 @@ main{
 @media screen and (max-width: 550px){
   .mv__right{
     width: 100%;
+  }
+  .mv__right img{
+    height: auto;
   }
 }
 /* news */
