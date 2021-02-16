@@ -488,17 +488,29 @@ main{
 .slick{
   overflow: hidden;
 }
-.slick__warp{
-  margin: 0 auto;
+.slick__wrap{
+  margin: 0 auto -42px;
 }
-.slick__warp ul{
+.slick__wrap ul{
   display: flex;
 }
-.slick__warp li{
+.slick__wrap li{
   list-style: none;
 }
-.slick__warp li img{
+.slick__wrap li img{
   width: 33.2vw;
+}
+.slick__text{
+  text-align: center;
+  position: relative;
+  bottom: 73px;
+}
+.slick__wrap h4{
+  font-size: 14px;
+  background: #fff;
+  opacity: 0.85;
+  padding: 14px;
+  display: inline-block;
 }
 @media screen and (max-width:1200px) {
   .slick__warp li img{
