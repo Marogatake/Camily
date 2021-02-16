@@ -9,7 +9,7 @@ $(function(){
     winWidth = $(window).width(),
     winHeight = $(window).height();
     if (winWidth < 900 && reloadFlag ==0 ) {
-      location.reload();
+      // location.reload();
       reloadFlag = 1;
       subReloadFlag = 1;
     }

@@ -1,12 +1,11 @@
 body{
   overflow-x: hidden;
 }
-.wrapper{
-  min-width: 550px;
-  margin: 0 auto;
-}
 a{
   text-decoration: none;
+}
+.wrapper{
+  min-width: 550px;
 }
 header{
   opacity: 0.8;
@@ -136,7 +135,6 @@ header{
   }
   .header__right li{
     padding-bottom: 20px;
-    padding-top: 20px;
     margin-left: 10vw;
     width: 30%;
   }
@@ -589,6 +587,7 @@ main{
 }
 .product__top-image{
   width: 100%;
+  position: relative;
   overflow-x: hidden;
 }
 .product__top-image ul{
@@ -840,7 +839,7 @@ main{
   }
   .product__top-text{
     order: 3;
-    width: 64vw;
+    width: 65%;
     height: auto;
     min-height: 36vw;
     bottom: 0;
@@ -855,13 +854,13 @@ main{
   .product__top-text h3{
     padding-top: 4vw;
     padding-bottom: 1.53vw;
-    width: 70%;
+    width: 75%;
   }
   .product__top-text p{
     font-size: 16px;
     line-height: 35px;
     padding-bottom: 2.19vw;
-    width: 70%;
+    width: 75%;
   }
   .product__top-link{
     display: flex;
