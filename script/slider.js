@@ -35,20 +35,48 @@ $(function () {
   // .productの動き
   var sliderBox = $('#slider'),
   boxwidth = sliderBox.width(),
+  elementQuantity = $('#slider li').length,
   interval = setInterval(function(){NextSlider();}, 10000),
-  cancelFlag = 0;
-  countdownProduct();
+  cancelFlag = 0, helpFlag = 0;
   productTextHeight = $('.product__top-text').height();
   $(window).resize(function() {
     productTextHeight = $('.product__top-text').height();
   });
 
+  centerElementNumber = $('#product_center').attr('class').replace('slider','');
+  $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
+  firstCount = setTimeout(function(){
+    $('.product__top-button li').eq(centerElementNumber).css({'background':'linear-gradient(90deg,#110603 0%,#110603 50%,#e6e7e9 50%,#e6e7e9 100%'});
+    $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,#110603 50%,#110603 100%');
+  },4500);
+  secondCount = setTimeout(function(){
+    $('.product__top-button li').eq(centerElementNumber).css({'background':'linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%'});
+    $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(0deg)','transition':'0s'});
+    $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
+  },9000);
+
   $(window).bind("focus", function(){IntervalSlide();});
-  $(window).bind("blur", function(){clearInterval(interval)});
+  $(window).bind("blur", function(){
+    clearInterval(interval);
+    resetCountdown();
+    cancelFlag = 0;
+  });
   $(window).scrollLeft(0);
+
+  setInterval(function(){
+    if (cancelFlag==1) {
+      helpFlag +=1;
+      if (helpFlag >=4) {
+        cancelFlag = 0;
+      }
+    }else {
+      helpFlag =0;
+    }
+  },2000);
 
   $('#prev').click(function(){
     clearInterval(interval);
+    resetCountdown();
     if (cancelFlag == 0) {
       cancelFlag =1;
       PrevSlider();
@@ -57,6 +85,7 @@ $(function () {
   });
   $('#next').click(function(){
     clearInterval(interval);
+    resetCountdown();
     if (cancelFlag == 0) {
       cancelFlag =1;
       NextSlider();
@@ -84,7 +113,6 @@ $(function () {
     element6 = $('#product_add3'),
     element7 = $('#product_add4'),
 
-    elementQuantity = $('#slider li').length;
     element1Width = parseInt(element1.css('width'), 10),
     element2Width = parseInt(element2.css('width'), 10),
     element3Width = parseInt(element3.css('width'), 10);
@@ -115,6 +143,7 @@ $(function () {
       element3.removeAttr('id').attr('id', 'product_center');
       textChangeAct();
       IntervalSlide();
+      countdownProduct();
     });
     setTimeout(function(){
       if (elementQuantity <= 3) {
@@ -150,7 +179,6 @@ $(function () {
     element6 = $('#product_add3'),
     element7 = $('#product_add4'),
 
-    elementQuantity = $('#slider li').length;
     element1Width = parseInt(element1.css('width'), 10),
     element2Width = parseInt(element2.css('width'), 10),
     element3Width = parseInt(element3.css('width'), 10);
@@ -183,6 +211,7 @@ $(function () {
       element2.removeAttr('id').attr('id', 'product_right');
       textChangeAct();
       IntervalSlide();
+      countdownProduct();
     });
     element3.animate({'left': winWidth},element3FlowWidth*1500/winWidth,'linear',
     function(){
@@ -239,17 +268,28 @@ $(function () {
  }
 
   function countdownProduct() {
+   resetCountdown();
    centerElementNumber = $('#product_center').attr('class').replace('slider','');
    $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
-   setTimeout(function(){
+   firstCount = setTimeout(function(){
      $('.product__top-button li').eq(centerElementNumber).css({'background':'linear-gradient(90deg,#110603 0%,#110603 50%,#e6e7e9 50%,#e6e7e9 100%'});
      $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,#110603 50%,#110603 100%');
    },4500);
-   setTimeout(function(){
+   secondCount = setTimeout(function(){
      $('.product__top-button li').eq(centerElementNumber).css({'background':'linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%'});
      $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(0deg)','transition':'0s'});
      $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
    },9000);
+ }
+
+  function resetCountdown() {
+    clearTimeout( firstCount );
+    clearTimeout( secondCount );
+    for (var i = 1; i < elementQuantity +1; i++) {
+      $('.product__top-button li').eq(i).css({'background':'linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%'});
+      $('.product__top-button li').eq(i).find('.chart-meter').css({'transform':'rotate(0deg)','transition':'0s'});
+      $('.product__top-button li').eq(i).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
+    }
  }
 
   function IntervalSlide() {
@@ -271,7 +311,6 @@ $(function () {
     element6 = $('#product_add3'),
     element7 = $('#product_add4'),
 
-    elementQuantity = $('#slider li').length;
     element1Width = parseInt(element1.css('width'), 10),
     element2Width = parseInt(element2.css('width'), 10),
     element3Width = parseInt(element3.css('width'), 10),
@@ -337,7 +376,6 @@ $(function () {
     element6 = $('#product_add3'),
     element7 = $('#product_add4'),
 
-    elementQuantity = $('#slider li').length;
     element1Width = parseInt(element1.css('width'), 10),
     element2Width = parseInt(element2.css('width'), 10),
     element3Width = parseInt(element3.css('width'), 10),
@@ -390,6 +428,7 @@ $(function () {
   function clickNumButton(clickNumber) {
     clickNumber.click(function(){
       clearInterval(interval);
+      resetCountdown();
       if (cancelFlag == 0) {
         cancelFlag =1;
         clickedElement = $(this).attr('id').replace('num','');
@@ -406,6 +445,7 @@ $(function () {
             cancelFlag = 0;
             textChangeAct();
             IntervalSlide();
+            countdownProduct();
           }, 910 * elementQuantity - 910 * numberDifference);
         }else if (0 < numberDifference && numberDifference  <= 5) {
           for (var i = 0; i < numberDifference; i++) {
@@ -416,6 +456,7 @@ $(function () {
             cancelFlag = 0;
             textChangeAct();
             IntervalSlide();
+            countdownProduct();
           }, 910 * numberDifference);
         }else if (numberDifference == 0) {
           cancelFlag = 0;
@@ -429,6 +470,7 @@ $(function () {
             cancelFlag = 0;
             textChangeAct();
             IntervalSlide();
+            countdownProduct();
           }, 910 * - numberDifference);
         }else if (numberDifference < -5) {
           for (var i = 0; i < elementQuantity + numberDifference; i++) {
@@ -439,6 +481,7 @@ $(function () {
             cancelFlag = 0;
             textChangeAct();
             IntervalSlide();
+            countdownProduct();
           }, 910 * elementQuantity + 910 * numberDifference);
         }
       }

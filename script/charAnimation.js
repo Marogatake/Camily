@@ -91,4 +91,25 @@ $(function(){
       object.children('span').eq(i).animate({'opacity':'1'}, 500 * ( i + 1) );
     }
   }
+
+  // assessmentの動き
+  for (var i = 5; i < 7; i++) {
+    $('.assessment__wrap li').eq(i).fadeOut(0);
+  }
+  $('.assessment__header span').click(function(){
+    if ($('.assessment__wrap li').hasClass('show')) {
+    for (var i = 5; i < 7; i++) {
+      $('.assessment__wrap li').eq(i).fadeOut(150*i);
+      $('.assessment__wrap li').eq(i).removeClass('show');
+    }
+    $('.assessment__header span').css({'transform':'rotate(0deg)','transition':'1s'})
+  }else {
+    for (var i = 5; i < 7; i++) {
+      $('.assessment__wrap li').eq(i).fadeIn(150*i);
+      $('.assessment__wrap li').eq(i).addClass('show');
+    }
+    $('.assessment__header span').css({'transform':'rotate(180deg)','transition':'1s'})
+  }
+  });
+
 });

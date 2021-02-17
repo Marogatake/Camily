@@ -775,6 +775,8 @@ main{
   border-radius: 50%;
   overflow: hidden;
   margin: 0 2vw;
+  border: 1px solid #706e6d;
+  cursor: pointer;
 }
 /* 商品数に応じて以下の:nth-child(-n+8)は調整 */
 .product__top-button li:nth-child(n+2):nth-child(-n+8){
@@ -806,12 +808,12 @@ main{
   content: "";
   position: absolute;
   border-radius: 50%;
-  left: 5%;
-  top: 5%;
-  width: 90%;
-  height: 90%;
+  left: 8%;
+  top: 8%;
+  width: 84%;
+  height: 84%;
   background:#e6e7e9;
-  line-height: 40.5px;
+  line-height: 37.8px;
 }
 .product__bottom img{
   width: 100%;
@@ -1002,10 +1004,10 @@ main{
     height: 30px;
     width: 30px;
     line-height: 30px;
-    margin: 0;
+    margin: 0 1vw;
   }
   .product__top-button li .chart-value{
-    line-height: 30px;
+    line-height: 24px;
   }
   .product__bottom{
     margin-top: 4vw;
@@ -1082,6 +1084,9 @@ main{
   .product__top-text .num{
     display: none!important;
   }
+  .product__top-button li{
+    margin: 0 0.5vw;
+  }
   .product__bottom-text p{
     background-color: #fff;
     opacity: 0.8;
@@ -1129,25 +1134,25 @@ main{
   padding-top: 8.67vw;
   padding-bottom: 7.66%;
 }
-.assessment__content{
+.assessment__header{
   margin: auto;
 }
-.assessment__content-text{
+.assessment__header{
   width: 64.11%;
   margin: 0 auto;
 }
-.assessment__content h2{
+.assessment__header h2{
   font-size: 45px;
   font-family: 'Noto Sans', sans-serif;
   letter-spacing: 0.1em;
   display: inline;
 }
-.assessment__content-text .fa-stack{
+.assessment__header .fa-stack{
   margin-top: -15px;
   font-size:15px;
   margin-left: 10px;
 }
-.assessment__content p{
+.assessment__header p{
   font-size: 21.4px;
   font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-weight: bold;
@@ -1155,45 +1160,45 @@ main{
   margin-top: 12px;
   padding-bottom: 48px;
 }
-.assessment__content ul{
+.assessment__wrap ul{
   background-color: #ffffff;
   height: 495px;
   width: 64.11%;
+  padding-left: 96px;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-.assessment__content li{
-  padding-left: 98px;
+.assessment__wrap li{
   font-size: 16px;
   font-weight: bold;
   line-height: 1.5625;
-  list-style: none;
+  list-style: decimal;
   font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 }
 @media screen and (max-width: 1200px){
-  .assessment__content h2{
+  .assessment__header h2{
     font-size: 30px;
   }
-  .assessment__content h2::before{
+  .assessment__header h2::before{
     top: 8px;
   }
-  .assessment__content p{
+  .assessment__header p{
     font-size: 14px;
   }
-  .assessment__content-text .fa-stack{
+  .assessment__header-text .fa-stack{
     font-size: 10px;
     margin-left: 0;
   }
 }
 @media screen and (max-width: 1000px){
-  .assessment__content ul{
+  .assessment__header ul{
     padding-right: 20px;
   }
 }
 @media screen and (max-width: 800px){
-  .assessment__content ul{
+  .assessment__header ul{
     width: 80%;
   }
 }
@@ -1202,19 +1207,16 @@ main{
     width: 100%;
     box-sizing: border-box;
   }
-  .assessment__content{
-    width: 100%;
-  }
-  .assessment__content p {
+  .assessment__header p {
     padding-bottom: 20px;
   }
-  .assessment__content-text{
+  .assessment__header-text{
     text-align: center;
   }
-  .assessment__content li{
+  .assessment__wrap li{
     padding-left: 0;
   }
-  .assessment__content ul{
+  .assessment__wrap ul{
     width: 80%;
     padding-left: 40px;
     padding-right: 20px;
@@ -1226,7 +1228,7 @@ main{
   }
 }
 @media screen and (max-width: 391px){
-  .assessment__content-text .fa-stack{
+  .assessment__header-text .fa-stack{
     left: 130px;
     top: -13px;
   }
