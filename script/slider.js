@@ -378,7 +378,10 @@ $(function () {
 
     element1Width = parseInt(element1.css('width'), 10),
     element2Width = parseInt(element2.css('width'), 10),
-    element3Width = parseInt(element3.css('width'), 10),
+    element3Width = parseInt(element3.css('width'), 10);
+    if (winWidth <= 1300) {
+      element1Width = element1Width*0.5;
+    }
     element1Position = parseInt(element1.css('left'), 10),
     element2Position = parseInt(element2.css('left'), 10),
     element3Position = parseInt(element3.css('left'), 10),
