@@ -32,7 +32,7 @@ $(function(){
     clearTimeout( timer );
     timer = setTimeout(function() {
       scroll = $(window).scrollTop();
-      runPositon =scroll + winHeight * 1;
+      runPositon =scroll + winHeight * 0.65;
       if ( runPositon >= storyTitlePosition) {
         if (900 < winWidth) {
           setTimeout(function(){
@@ -42,7 +42,7 @@ $(function(){
           setTimeout(function(){
             $('#before').animate({'width':'55.6%'},1300);
             $('#after').animate({'width':'80%'},1300);
-          },800)
+          },500)
         }else if (winWidth <= 900) {
           setTimeout(function(){
             charOneByOne(storyTitle);
@@ -103,8 +103,3 @@ $(function(){
   }
   });
 });
-
-
-
-
-
