@@ -4,12 +4,10 @@ $(function(){
   scroll,runPositon,
   reloadFlag = 0,
   subReloadFlag = 0;
-
   $(window).resize(function() {
     winWidth = $(window).width(),
     winHeight = $(window).height();
   });
-
   storyTitle = $('#fadein_title_story'),
   sceneTitle = $('#fadein_title_scene'),
   productTitle = $('#fadein_title_product'),
@@ -22,7 +20,6 @@ $(function(){
   productPosition = productTitle.offset().top + productTitle.height() *0.5,
   assesmentPosition = assesmentTitle.offset().top + assesmentTitle.height() *0.5,
   faqPosition = faqTitle.offset().top + faqTitle.height() *0.5 ;
-
   // 初期設定
   storyText.add(sceneText).css({'opacity':'0','marginLeft':'-15px'});
   resetChar(storyTitle);
@@ -30,7 +27,6 @@ $(function(){
   resetChar(productTitle);
   resetChar(assesmentTitle);
   resetChar(faqTitle);
-
   var timer = null;
   $(window).on('scroll',function() {
     clearTimeout( timer );
@@ -52,16 +48,13 @@ $(function(){
             charOneByOne(storyTitle);
             storyText.animate({'opacity':'1','marginLeft':'0'},800);
           },300);
-          setTimeout(function(){
-            $('#before').animate({'width':'30%'},1300);
-            $('#after').animate({'width':'55%'},1300);
-          },800)
         }
       }
-
       if ( runPositon >= scenePosition) {
-        charOneByOne(sceneTitle);
-        sceneText.animate({'opacity':'1','marginLeft':'0'},800);
+        setTimeout(function(){
+          charOneByOne(sceneTitle);
+          sceneText.animate({'opacity':'1','marginLeft':'0'},800);
+        },300);
       }
       if ( runPositon >= productPosition) {
         charOneByOne(productTitle);
@@ -74,7 +67,6 @@ $(function(){
       }
     });
   });
-
   function resetChar(object) {
     var content = object.html();
     text = $.trim(content);
@@ -91,7 +83,6 @@ $(function(){
       object.children('span').eq(i).animate({'opacity':'1'}, 500 * ( i + 1) );
     }
   }
-
   // assessmentの動き
   for (var i = 5; i < 7; i++) {
     $('.assessment__wrap li').eq(i).fadeOut(0);
@@ -111,5 +102,9 @@ $(function(){
     $('.assessment__header span').css({'transform':'rotate(180deg)','transition':'1s'})
   }
   });
-
 });
+
+
+
+
+

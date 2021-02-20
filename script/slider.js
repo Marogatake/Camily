@@ -3,32 +3,26 @@ $(function () {
   $(window).resize(function() {
     winWidth = $(window).width();
   });
+
   // .mvの動き
-  sub1_img = $('#subImg #first_img img').attr('src');
-  sub2_img = $('#subImg #second_img img').attr('src');
-  setInterval(function() {
-    main_img = $('#mainImg img').attr('src');
-    if (main_img == sub1_img) {
-      $('#mainImg img').fadeOut(500, function() {
-        $('#mainImg img').attr('src', sub2_img).on('load', function() {
-          $(this).fadeIn();
-        });
-      });
-    }else if (main_img == sub2_img) {
-      $('#mainImg img').fadeOut(500, function() {
-        $('#mainImg img').attr('src', sub1_img).on('load', function() {
-          $(this).fadeIn();
-        });
-      });
+  setInterval(function(){
+    img1Display = $('#first_img').css('display'),
+    img2Display = $('#second_img').css('display');
+    if (img1Display == 'none') {
+      $('#first_img').fadeIn(1000);
+      $('#second_img').fadeOut(500);
+    }else if (img2Display == 'none') {
+      $('#first_img').fadeOut(500);
+      $('#second_img').fadeIn(1000);
     }
-  }, 9000);
+  },8000);
 
   // .slickの動き
   setInterval(function(){
     var elementWidth = $('#slide_items li').width(),
     flowWidth = elementWidth * 5;
     $('#slide_items').animate({'marginLeft': - flowWidth},
-    25000, 'linear',
+    65000, 'linear',
     function(){$('#slide_items').css('marginLeft','0');});
   }, 600);
 
