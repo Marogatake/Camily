@@ -139,7 +139,7 @@ header{
   }
   .header__right li{
     padding-bottom: 20px;
-    /* margin-left: 10vw; */
+    margin-left: 0;
     width: 100%;
     text-align: center;
   }
