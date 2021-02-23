@@ -415,8 +415,8 @@ $(function () {
   }
 
   function clickNumButton(clickNumber) {
+    clickNumber.click(function(){
     if (cancelFlag == 0) {
-      clickNumber.click(function(){
         resetCountdown();
         clearInterval(interval);
         cancelFlag =1;
@@ -474,7 +474,7 @@ $(function () {
                   }, 910 * elementQuantity + 910 * numberDifference);
                 }
               }
-            )
-          }
+            }
+          )
         }
 });
