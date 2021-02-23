@@ -30,8 +30,8 @@ $(function () {
   var sliderBox = $('#slider'),
   boxwidth = sliderBox.width(),
   elementQuantity = $('#slider li').length,
-  interval = setInterval(function(){NextSlider();}, 10000),
   cancelFlag = 0, helpFlag = 0;
+  interval = setTimeout(function(){NextSlider();}, 9000);
   productTextHeight = $('.product__top-text').height();
   $(window).resize(function() {
     productTextHeight = $('.product__top-text').height();
@@ -49,7 +49,7 @@ $(function () {
     $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
   },9000);
 
-  $(window).bind("focus", function(){IntervalSlide();});
+  $(window).bind("focus", function(){interval = setTimeout(function(){NextSlider();}, 9000);});
   $(window).bind("blur", function(){
     clearInterval(interval);
     resetCountdown();
@@ -58,33 +58,26 @@ $(function () {
   $(window).scrollLeft(0);
 
   setInterval(function(){
-    if (cancelFlag==1) {
-      helpFlag +=1;
-      if (helpFlag >=4) {
+    if (cancelFlag == 1) {
+      helpFlag += 1;
+      if (helpFlag >= 4) {
         cancelFlag = 0;
       }
     }else {
-      helpFlag =0;
+      helpFlag = 0;
     }
   },2000);
 
   $('#prev').click(function(){
     clearInterval(interval);
     resetCountdown();
-    if (cancelFlag == 0) {
-      cancelFlag =1;
-      PrevSlider();
-      setTimeout(function(){cancelFlag =0;IntervalSlide();}, 1400);
-    }
+    PrevSlider();
   });
+
   $('#next').click(function(){
     clearInterval(interval);
     resetCountdown();
-    if (cancelFlag == 0) {
-      cancelFlag =1;
-      NextSlider();
-      setTimeout(function(){cancelFlag =0;IntervalSlide();}, 1400);
-    }
+    NextSlider();
   });
 
   clickNumButton($('#num1'));
@@ -96,148 +89,156 @@ $(function () {
   clickNumButton($('#num7'));
 
   function NextSlider() {
-    clearInterval(interval);
+    if (cancelFlag == 0) {
+      cancelFlag =1;
+      clearInterval(interval);
 
-    element1 = $('#product_left'),
-    element2 = $('#product_center'),
-    element3 = $('#product_right'),
-    // スライダーを追加する場合は以下の書き方を参考
-    element4 = $('#product_add1'),
-    element5 = $('#product_add2'),
-    element6 = $('#product_add3'),
-    element7 = $('#product_add4'),
+      element1 = $('#product_left'),
+      element2 = $('#product_center'),
+      element3 = $('#product_right'),
+      // スライダーを追加する場合は以下の書き方を参考
+      element4 = $('#product_add1'),
+      element5 = $('#product_add2'),
+      element6 = $('#product_add3'),
+      element7 = $('#product_add4'),
 
-    element1Width = parseInt(element1.css('width'), 10),
-    element2Width = parseInt(element2.css('width'), 10),
-    element3Width = parseInt(element3.css('width'), 10);
-    if (winWidth <= 1300) {
-      element3Width = element3Width*0.5;
-    }
-    element1Position = parseInt(element1.css('left'), 10),
-    element2Position = parseInt(element2.css('left'), 10),
-    element3Position = parseInt(element3.css('left'), 10),
-    element1FlowWidth = element1Width + element1Position ,
-    element2FlowWidth = element2Position + 0.592*element2Width;
-    element3FlowWidth = element3Position - winWidth*0.5 + element3Width;
+      element1Width = parseInt(element1.css('width'), 10),
+      element2Width = parseInt(element2.css('width'), 10),
+      element3Width = parseInt(element3.css('width'), 10);
+      if (winWidth <= 1300) {
+        element3Width = element3Width*0.5;
+      }
+      element1Position = parseInt(element1.css('left'), 10),
+      element2Position = parseInt(element2.css('left'), 10),
+      element3Position = parseInt(element3.css('left'), 10),
+      element1FlowWidth = element1Width + element1Position ,
+      element2FlowWidth = element2Position + 0.592*element2Width;
+      element3FlowWidth = element3Position - winWidth*0.5 + element3Width;
 
-    element1.clone().removeAttr('id').attr('id', 'clone')
-    .appendTo(sliderBox).css('left','100vw');
-    cloneElement = $('#clone');
-    cloneFlowWidth = winWidth*0.11;
-    element1.animate({'left':- element1Width},element1FlowWidth*1500/winWidth,'linear',
-    function(){
-      element1.remove();
-    });
-    element2.animate({'left': -0.592*element2Width},element2FlowWidth*1500/winWidth,'linear',
-    function(){
-      element2.removeAttr('id').attr('id', 'product_left');
-    });
-    element3.animate({'left': winWidth*0.5 - element3Width},element3FlowWidth*1500/winWidth,'linear',
-    function(){
-      element3.removeAttr('id').attr('id', 'product_center');
-      textChangeAct();
-      IntervalSlide();
-      countdownProduct();
-    });
-    setTimeout(function(){
-      if (elementQuantity <= 3) {
-        // 商品数が３つのときに実行される
-        cloneElement.animate({'left': winWidth*0.89},cloneFlowWidth*1900/winWidth,'linear',
-        function(){
+      element1.clone().removeAttr('id').attr('id', 'clone')
+      .appendTo(sliderBox).css('left','100vw');
+      cloneElement = $('#clone');
+      cloneFlowWidth = winWidth*0.11;
+      element1.animate({'left':- element1Width},element1FlowWidth*1500/winWidth,'linear',
+      function(){
+        element1.remove();
+      });
+      element2.animate({'left': -0.592*element2Width},element2FlowWidth*1500/winWidth,'linear',
+      function(){
+        element2.removeAttr('id').attr('id', 'product_left');
+      });
+      element3.animate({'left': winWidth*0.5 - element3Width},element3FlowWidth*1500/winWidth,'linear',
+      function(){
+        element3.removeAttr('id').attr('id', 'product_center');
+        textChangeAct();
+        interval = setTimeout(function(){NextSlider();}, 9000);
+        countdownProduct();
+        setTimeout(function(){cancelFlag = 0;},1020);
+      });
+      setTimeout(function(){
+        if (elementQuantity <= 3) {
+          // 商品数が３つのときに実行される
+          cloneElement.animate({'left': winWidth*0.89},cloneFlowWidth*1900/winWidth,'linear',
+          function(){
             cloneElement.removeAttr('id').attr('id', 'product_right');
           });
-      }else if (elementQuantity > 3) {
-        // 商品数が３つを越えるときに実行される
-        element4.animate({'left': winWidth*0.89},cloneFlowWidth*1500/winWidth,'linear',
-        function(){
-          element4.removeAttr('id').attr('id', 'product_right');
-          // element5以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
-          element5.removeAttr('id').attr('id', 'product_add1');
-          element6.removeAttr('id').attr('id', 'product_add2');
-          element7.removeAttr('id').attr('id', 'product_add3');
-          cloneElement.removeAttr('id').attr('id', 'product_add4');
-      });
-      }
-    }, 600);
+        }else if (elementQuantity > 3) {
+          // 商品数が３つを越えるときに実行される
+          element4.animate({'left': winWidth*0.89},cloneFlowWidth*1500/winWidth,'linear',
+          function(){
+            element4.removeAttr('id').attr('id', 'product_right');
+            // element5以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
+            element5.removeAttr('id').attr('id', 'product_add1');
+            element6.removeAttr('id').attr('id', 'product_add2');
+            element7.removeAttr('id').attr('id', 'product_add3');
+            cloneElement.removeAttr('id').attr('id', 'product_add4');
+          });
+        }
+      }, 600);
+    }
   }
 
   function PrevSlider(){
-    clearInterval(interval);
+    if (cancelFlag == 0) {
+      cancelFlag =1;
+      clearInterval(interval);
 
-    element1 = $('#product_left'),
-    element2 = $('#product_center'),
-    element3 = $('#product_right'),
-    // スライダーを追加する場合は element4,5,6,7のような記述をしておく
-    element4 = $('#product_add1'),
-    element5 = $('#product_add2'),
-    element6 = $('#product_add3'),
-    element7 = $('#product_add4'),
+      element1 = $('#product_left'),
+      element2 = $('#product_center'),
+      element3 = $('#product_right'),
+      // スライダーを追加する場合は element4,5,6,7のような記述をしておく
+      element4 = $('#product_add1'),
+      element5 = $('#product_add2'),
+      element6 = $('#product_add3'),
+      element7 = $('#product_add4'),
 
-    element1Width = parseInt(element1.css('width'), 10),
-    element2Width = parseInt(element2.css('width'), 10),
-    element3Width = parseInt(element3.css('width'), 10);
-    if (winWidth <= 1300) {
-      element1Width = element1Width*0.5;
-    }
-    element1Position = parseInt(element1.css('left'), 10),
-    element2Position = parseInt(element2.css('left'), 10),
-    element3Position = parseInt(element3.css('left'), 10),
-    element1FlowWidth = winWidth*0.5 - element1Width - element1Position,
-    element2FlowWidth = winWidth*0.89 - element2Position,
-    element3FlowWidth = winWidth*0.11;
-
-    // スライダーに載せる商品の個数に合わせて以下 3つの element7 を書き換える。
-    // (例:商品が10つの場合element10とする)
-    cloneWidth = parseInt( element7.css('width'), 10);
-    element7.clone().removeAttr('id').attr('id', 'clone')
-    .prependTo(sliderBox).css('left', - cloneWidth);
-    cloneElement = $('#clone'),
-    cloneFlowWidth = cloneWidth *0.408;
-    element7.remove();
-
-
-    element1.animate({'left': winWidth*0.5 - element1Width},element1FlowWidth*1500/winWidth,'linear',
-    function(){
-      element1.removeAttr('id').attr('id', 'product_center');
-    });
-    element2.animate({'left':winWidth*0.89},element2FlowWidth*1500/winWidth,'linear',
-    function(){
-      element2.removeAttr('id').attr('id', 'product_right');
-      textChangeAct();
-      IntervalSlide();
-      countdownProduct();
-    });
-    element3.animate({'left': winWidth},element3FlowWidth*1500/winWidth,'linear',
-    function(){
-      if (elementQuantity <= 3) {
-        // 商品数が３つのときに実行される
-        element3.remove();
-      }else if(elementQuantity > 3){
-        // 商品数が３商品数が３つを越えるときに実行される
-        element3.removeAttr('id').attr('id', 'product_add1');
-        // 最後を除く3番目以降の要素に対して自身の一個後ろのidに書き換える(以下は商品数7のときの例)
-        element4.removeAttr('id').attr('id', 'product_add2');
-        element5.removeAttr('id').attr('id', 'product_add3');
-        element6.removeAttr('id').attr('id', 'product_add4');
+      element1Width = parseInt(element1.css('width'), 10),
+      element2Width = parseInt(element2.css('width'), 10),
+      element3Width = parseInt(element3.css('width'), 10);
+      if (winWidth <= 1300) {
+        element1Width = element1Width*0.5;
       }
-    });
-    setTimeout(function(){
-      cloneElement.animate({'left': -0.592*cloneWidth}, cloneFlowWidth*1500/winWidth,'linear',
+      element1Position = parseInt(element1.css('left'), 10),
+      element2Position = parseInt(element2.css('left'), 10),
+      element3Position = parseInt(element3.css('left'), 10),
+      element1FlowWidth = winWidth*0.5 - element1Width - element1Position,
+      element2FlowWidth = winWidth*0.89 - element2Position,
+      element3FlowWidth = winWidth*0.11;
+
+      // スライダーに載せる商品の個数に合わせて以下 3つの element7 を書き換える。
+      // (例:商品が10つの場合element10とする)
+      cloneWidth = parseInt( element7.css('width'), 10);
+      element7.clone().removeAttr('id').attr('id', 'clone')
+      .prependTo(sliderBox).css('left', - cloneWidth);
+      cloneElement = $('#clone'),
+      cloneFlowWidth = cloneWidth *0.408;
+      element7.remove();
+
+
+      element1.animate({'left': winWidth*0.5 - element1Width},element1FlowWidth*1500/winWidth,'linear',
       function(){
-        cloneElement.removeAttr('id').attr('id', 'product_left');
+        element1.removeAttr('id').attr('id', 'product_center');
       });
-    }, 600);
+      element2.animate({'left':winWidth*0.89},element2FlowWidth*1500/winWidth,'linear',
+      function(){
+        element2.removeAttr('id').attr('id', 'product_right');
+        interval = setTimeout(function(){NextSlider();}, 9000);
+        countdownProduct();
+        textChangeAct();
+        setTimeout(function(){cancelFlag = 0;},1020);
+      });
+      element3.animate({'left': winWidth},element3FlowWidth*1500/winWidth,'linear',
+      function(){
+        if (elementQuantity <= 3) {
+          // 商品数が３つのときに実行される
+          element3.remove();
+        }else if(elementQuantity > 3){
+          // 商品数が３商品数が３つを越えるときに実行される
+          element3.removeAttr('id').attr('id', 'product_add1');
+          // 最後を除く3番目以降の要素に対して自身の一個後ろのidに書き換える(以下は商品数7のときの例)
+          element4.removeAttr('id').attr('id', 'product_add2');
+          element5.removeAttr('id').attr('id', 'product_add3');
+          element6.removeAttr('id').attr('id', 'product_add4');
+        }
+      });
+      setTimeout(function(){
+        cloneElement.animate({'left': -0.592*cloneWidth}, cloneFlowWidth*1500/winWidth,'linear',
+        function(){
+          cloneElement.removeAttr('id').attr('id', 'product_left');
+        });
+      }, 600);
+    }
   }
 
   function textChange(nextFolded) {
     nextHTML = nextFolded.html();
     $('.product__top-text').css('min-height', productTextHeight);
-    $('.product__top-text :nth-child(n)').fadeOut(600);
+    $('.product__top-text :nth-child(n)').fadeOut(500);
     setTimeout(function(){
       $('.product__top-text').html('').html(nextHTML);
       $('.product__top-text :nth-child(n)').css('display','none');
-      $('.product__top-text :nth-child(n)').fadeIn(600);
-    },650);
+      $('.product__top-text :nth-child(n)').fadeIn(500);
+    },520);
   }
 
   function textChangeAct() {
@@ -284,15 +285,6 @@ $(function () {
       $('.product__top-button li').eq(i).find('.chart-meter').css({'transform':'rotate(0deg)','transition':'0s'});
       $('.product__top-button li').eq(i).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
     }
- }
-
-  function IntervalSlide() {
-   if (cancelFlag == 0) {
-     cancelFlag =1;
-     countdownProduct();
-     interval = setInterval(function(){NextSlider();}, 9000);
-     setTimeout(function(){cancelFlag =0;}, 1400);
-   }
  }
 
   function flowToNext() {
@@ -423,10 +415,10 @@ $(function () {
   }
 
   function clickNumButton(clickNumber) {
-    clickNumber.click(function(){
-      clearInterval(interval);
-      resetCountdown();
-      if (cancelFlag == 0) {
+    if (cancelFlag == 0) {
+      clickNumber.click(function(){
+        resetCountdown();
+        clearInterval(interval);
         cancelFlag =1;
         clickedElement = $(this).attr('id').replace('num','');
         centerElementNumber = sliderBox.children('li').eq('1').attr('class').replace('slider','');
@@ -438,51 +430,51 @@ $(function () {
             setTimeout(function(){
               flowToPrev();
             },900 * i);}
-          setTimeout(function(){
-            cancelFlag = 0;
-            textChangeAct();
-            IntervalSlide();
-            countdownProduct();
-          }, 910 * elementQuantity - 910 * numberDifference);
+            setTimeout(function(){
+              interval = setTimeout(function(){NextSlider();}, 9000);
+              countdownProduct();
+              textChangeAct();
+              setTimeout(function(){cancelFlag = 0;},1020);
+            }, 910 * elementQuantity - 910 * numberDifference);
         }else if (0 < numberDifference && numberDifference  <= 5) {
-          for (var i = 0; i < numberDifference; i++) {
-            setTimeout(function(){
-              flowToNext();
-            },900 * i);}
-          setTimeout(function(){
-            cancelFlag = 0;
-            textChangeAct();
-            IntervalSlide();
-            countdownProduct();
-          }, 910 * numberDifference);
-        }else if (numberDifference == 0) {
-          cancelFlag = 0;
-          IntervalSlide();
-        }else if (-5 <= numberDifference && numberDifference < 0) {
-          for (var i = 0; i < - numberDifference; i++) {
-            setTimeout(function(){
-              flowToPrev();
-            },900 * i);}
-          setTimeout(function(){
-            cancelFlag = 0;
-            textChangeAct();
-            IntervalSlide();
-            countdownProduct();
-          }, 910 * - numberDifference);
-        }else if (numberDifference < -5) {
-          for (var i = 0; i < elementQuantity + numberDifference; i++) {
-            setTimeout(function(){
-              flowToNext();
-            },900 * i);}
-          setTimeout(function(){
-            cancelFlag = 0;
-            textChangeAct();
-            IntervalSlide();
-            countdownProduct();
-          }, 910 * elementQuantity + 910 * numberDifference);
+            for (var i = 0; i < numberDifference; i++) {
+              setTimeout(function(){
+                flowToNext();
+              },900 * i);}
+              setTimeout(function(){
+                interval = setTimeout(function(){NextSlider();}, 9000);
+                countdownProduct();
+                textChangeAct();
+                setTimeout(function(){cancelFlag = 0;},1020);
+              }, 910 * numberDifference);
+            }else if (numberDifference == 0) {
+              cancelFlag = 0;
+              interval = setTimeout(function(){NextSlider();}, 9000);
+            }else if (-5 <= numberDifference && numberDifference < 0) {
+              for (var i = 0; i < - numberDifference; i++) {
+                setTimeout(function(){
+                  flowToPrev();
+                },900 * i);}
+                setTimeout(function(){
+                  interval = setTimeout(function(){NextSlider();}, 9000);
+                  countdownProduct();
+                  textChangeAct();
+                  setTimeout(function(){cancelFlag = 0;},1020);
+                }, 910 * - numberDifference);
+              }else if (numberDifference < -5) {
+                for (var i = 0; i < elementQuantity + numberDifference; i++) {
+                  setTimeout(function(){
+                    flowToNext();
+                  },900 * i);}
+                  setTimeout(function(){
+                    interval = setTimeout(function(){NextSlider();}, 9000);
+                    countdownProduct();
+                    textChangeAct();
+                    setTimeout(function(){cancelFlag = 0;},1020);
+                  }, 910 * elementQuantity + 910 * numberDifference);
+                }
+              }
+            )
+          }
         }
-      }
-
-    });
-  }
 });
