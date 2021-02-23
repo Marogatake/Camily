@@ -31,12 +31,12 @@ $(function () {
   boxwidth = sliderBox.width(),
   elementQuantity = $('#slider li').length,
   cancelFlag = 0, helpFlag = 0;
-  interval = setTimeout(function(){NextSlider();}, 9000);
   productTextHeight = $('.product__top-text').height();
   $(window).resize(function() {
     productTextHeight = $('.product__top-text').height();
   });
 
+  interval = setTimeout(function(){NextSlider();}, 9000);
   centerElementNumber = $('#product_center').attr('class').replace('slider','');
   $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
   firstCount = setTimeout(function(){
@@ -49,7 +49,10 @@ $(function () {
     $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
   },9000);
 
-  $(window).bind("focus", function(){interval = setTimeout(function(){NextSlider();}, 9000);});
+  $(window).bind("focus", function(){
+    interval = setTimeout(function(){NextSlider();}, 9000);
+    countdownProduct();
+  });
   $(window).bind("blur", function(){
     clearInterval(interval);
     resetCountdown();
@@ -80,13 +83,27 @@ $(function () {
     NextSlider();
   });
 
-  clickNumButton($('#num1'));
-  clickNumButton($('#num2'));
-  clickNumButton($('#num3'));
-  clickNumButton($('#num4'));
-  clickNumButton($('#num5'));
-  clickNumButton($('#num6'));
-  clickNumButton($('#num7'));
+  $('#num1').click(function(){
+    clickNumButton($('#num1'));
+  });
+  $('#num2').click(function(){
+    clickNumButton($('#num2'));
+  });
+  $('#num3').click(function(){
+    clickNumButton($('#num3'));
+  });
+  $('#num4').click(function(){
+    clickNumButton($('#num4'));
+  });
+  $('#num5').click(function(){
+    clickNumButton($('#num5'));
+  });
+  $('#num6').click(function(){
+    clickNumButton($('#num6'));
+  });
+  $('#num7').click(function(){
+    clickNumButton($('#num7'));
+  });
 
   function NextSlider() {
     if (cancelFlag == 0) {
@@ -414,67 +431,68 @@ $(function () {
     }, 350);
   }
 
-  function clickNumButton(clickNumber) {
-    clickNumber.click(function(){
+  function clickNumButton(clickNum) {
     if (cancelFlag == 0) {
-        resetCountdown();
-        clearInterval(interval);
-        cancelFlag =1;
-        clickedElement = $(this).attr('id').replace('num','');
-        centerElementNumber = sliderBox.children('li').eq('1').attr('class').replace('slider','');
-        numberDifference = clickedElement - centerElementNumber;
-        elementQuantity = $('#slider li').length;
+      cancelFlag = 1;
+      resetCountdown();
+      clearInterval(interval);
+      clickedElement = clickNum.attr('id').replace('num','');
+      centerElementNumber = sliderBox.children('li').eq('1').attr('class').replace('slider','');
+      numberDifference = clickedElement - centerElementNumber;
+      elementQuantity = $('#slider li').length;
 
-        if (5 < numberDifference) {
-          for (var i = 0; i < elementQuantity - numberDifference; i++) {
-            setTimeout(function(){
-              flowToPrev();
-            },900 * i);}
-            setTimeout(function(){
-              interval = setTimeout(function(){NextSlider();}, 9000);
-              countdownProduct();
-              textChangeAct();
-              setTimeout(function(){cancelFlag = 0;},1020);
-            }, 910 * elementQuantity - 910 * numberDifference);
-        }else if (0 < numberDifference && numberDifference  <= 5) {
-            for (var i = 0; i < numberDifference; i++) {
-              setTimeout(function(){
-                flowToNext();
-              },900 * i);}
-              setTimeout(function(){
-                interval = setTimeout(function(){NextSlider();}, 9000);
-                countdownProduct();
-                textChangeAct();
-                setTimeout(function(){cancelFlag = 0;},1020);
-              }, 910 * numberDifference);
-            }else if (numberDifference == 0) {
-              cancelFlag = 0;
-              interval = setTimeout(function(){NextSlider();}, 9000);
-            }else if (-5 <= numberDifference && numberDifference < 0) {
-              for (var i = 0; i < - numberDifference; i++) {
-                setTimeout(function(){
-                  flowToPrev();
-                },900 * i);}
-                setTimeout(function(){
-                  interval = setTimeout(function(){NextSlider();}, 9000);
-                  countdownProduct();
-                  textChangeAct();
-                  setTimeout(function(){cancelFlag = 0;},1020);
-                }, 910 * - numberDifference);
-              }else if (numberDifference < -5) {
-                for (var i = 0; i < elementQuantity + numberDifference; i++) {
-                  setTimeout(function(){
-                    flowToNext();
-                  },900 * i);}
-                  setTimeout(function(){
-                    interval = setTimeout(function(){NextSlider();}, 9000);
-                    countdownProduct();
-                    textChangeAct();
-                    setTimeout(function(){cancelFlag = 0;},1020);
-                  }, 910 * elementQuantity + 910 * numberDifference);
-                }
-              }
-            }
-          )
+      if (5 < numberDifference) {
+        for (var i = 0; i < elementQuantity - numberDifference; i++) {
+          setTimeout(function(){
+            flowToPrev();
+          },900 * i);
         }
+        setTimeout(function(){
+          interval = setTimeout(function(){NextSlider();}, 9000);
+          countdownProduct();
+          textChangeAct();
+          setTimeout(function(){cancelFlag = 0;},1020);
+        }, 910 * elementQuantity - 910 * numberDifference);
+      }else if (0 < numberDifference && numberDifference  <= 5) {
+        for (var i = 0; i < numberDifference; i++) {
+          setTimeout(function(){
+            flowToNext();
+          },900 * i);
+        }
+        setTimeout(function(){
+          interval = setTimeout(function(){NextSlider();}, 9000);
+          countdownProduct();
+          textChangeAct();
+          setTimeout(function(){cancelFlag = 0;},1020);
+        }, 910 * numberDifference);
+      }else if (numberDifference == 0) {
+        cancelFlag = 0;
+        interval = setTimeout(function(){NextSlider();}, 9000);
+      }else if (-5 <= numberDifference && numberDifference < 0) {
+        for (var i = 0; i < - numberDifference; i++) {
+          setTimeout(function(){
+            flowToPrev();
+          },900 * i);
+        }
+        setTimeout(function(){
+          interval = setTimeout(function(){NextSlider();}, 9000);
+          countdownProduct();
+          textChangeAct();
+          setTimeout(function(){cancelFlag = 0;},1020);
+        }, 910 * - numberDifference);
+      }else if (numberDifference < -5) {
+        for (var i = 0; i < elementQuantity + numberDifference; i++) {
+          setTimeout(function(){
+            flowToNext();
+          },900 * i);
+        }
+        setTimeout(function(){
+          interval = setTimeout(function(){NextSlider();}, 9000);
+          countdownProduct();
+          textChangeAct();
+          setTimeout(function(){cancelFlag = 0;},1020);
+        }, 910 * elementQuantity + 910 * numberDifference);
+      }
+    }
+  }
 });
