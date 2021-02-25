@@ -800,6 +800,7 @@ main{
 /* 商品数に応じて以下の:nth-child(-n+8)を調整(要素数７のときは-n+８) */
 .product__top-button li:nth-child(n+2):nth-child(-n+8){
   background:linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%);
+  border: 1px solid #706e6d;
 }
 .product__top-button .chart-meter{
 	content: "";
@@ -812,6 +813,7 @@ main{
 	transform: rotate(0deg);
 	box-sizing: border-box;
   background:linear-gradient(90deg,transparent 0%,transparent 50%,#e6e7e9 50%,#e6e7e9 105%);
+  border: 1px solid #706e6d;
 }
 .product__top-button .chart-submeter{
   content: "";
@@ -824,6 +826,7 @@ main{
   transform: rotate(0deg);
   box-sizing: border-box;
   background:linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%);
+  border: 1px solid #706e6d;
 }
 .product__top-button .chart-value{
   content: "";
