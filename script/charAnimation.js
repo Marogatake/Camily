@@ -22,8 +22,6 @@ $(function(){
   faqPosition = faqTitle.offset().top + faqTitle.height() *0.5 ;
   // 初期設定
   storyText.add(sceneText).css({'opacity':'0','marginLeft':'-15px'});
-  $('#before_img').animate({'width':'29.4vw'},0);
-  $('#after_img').animate({'width':'20.43vw'},0);
   resetChar(storyTitle);
   resetChar(sceneTitle);
   resetChar(productTitle);

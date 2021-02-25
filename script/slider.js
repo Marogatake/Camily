@@ -88,7 +88,6 @@ $(function () {
         }
       }
     },2000);
-
   });
   $(window).bind("blur", function(){
     clearInterval(interval);
@@ -98,7 +97,6 @@ $(function () {
     cancelFlag = 0, helpFlag1 = 0, helpFlag2 = 0;
   });
   $(window).scrollLeft(0);
-
 
   $('#prev').click(function(){
     PrevSlider();
@@ -336,7 +334,7 @@ $(function () {
   function flowToNext() {
     return function(){
       var defer = $.Deferred();
-      var flowTimeGuide = 550,
+      var flowTimeGuide = 350,
       element1 = $('#product_left'),
       element2 = $('#product_center'),
       element3 = $('#product_right'),
@@ -364,18 +362,18 @@ $(function () {
       cloneElement = $('#clone');
       cloneFlowWidth = winWidth*0.11;
 
-      element1.animate({'left':- element1Width},element1FlowWidth*flowTimeGuide/winWidth,'linear',
+      element1.animate({'left':- element1Width},flowTimeGuide,'linear',
       function(){
         element1.remove();
       });
-      element2.animate({'left': -0.592*element2Width},element2FlowWidth*flowTimeGuide/winWidth,'linear',
+      element2.animate({'left': -0.592*element2Width},flowTimeGuide,'linear',
       function(){
         element2.removeAttr('id').attr('id', 'product_left');
       });
       if (winWidth <= 1300) {
         element3Width = element3Width*0.5;
       }
-      element3.animate({'left': winWidth*0.5 - element3Width},element3FlowWidth*flowTimeGuide/winWidth,'linear',
+      element3.animate({'left': winWidth*0.5 - element3Width},flowTimeGuide,'linear',
       function(){
         element3.removeAttr('id').attr('id', 'product_center');
         defer.resolve();
@@ -383,13 +381,14 @@ $(function () {
       setTimeout(function(){
         if (elementQuantity <= 3) {
           // 商品数が３つのときに実行される
-          cloneElement.animate({'left': winWidth*0.89},cloneFlowWidth*flowTimeGuide/winWidth,'linear',
+          cloneElement.animate({'left': winWidth*0.89},0.5*flowTimeGuide,'linear',
           function(){
             cloneElement.removeAttr('id').attr('id', 'product_right');
+            defer.resolve();
           });
         }else if (elementQuantity > 3) {
           // 商品数が３つを越えるときに実行される
-          element4.animate({'left': winWidth*0.89},cloneFlowWidth*flowTimeGuide/winWidth,'linear',
+          element4.animate({'left': winWidth*0.89},0.5*flowTimeGuide,'linear',
           function(){
               element4.removeAttr('id').attr('id', 'product_right');
               // element5以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
@@ -397,9 +396,10 @@ $(function () {
               element6.removeAttr('id').attr('id', 'product_add2');
               element7.removeAttr('id').attr('id', 'product_add3');
               cloneElement.removeAttr('id').attr('id', 'product_add4');
+              defer.resolve();
           });
         }
-      }, 0.5*element3FlowWidth*flowTimeGuide/winWidth);
+      }, 0.5*flowTimeGuide);
       return defer.promise();
     }
  }
@@ -407,7 +407,7 @@ $(function () {
   function flowToPrev() {
     return function(){
       var defer = $.Deferred();
-      var flowTimeGuide = 500,
+      var flowTimeGuide = 350,
       element1 = $('#product_left'),
       element2 = $('#product_center'),
       element3 = $('#product_right'),
@@ -439,16 +439,15 @@ $(function () {
       cloneFlowWidth = cloneWidth *0.408;
       element7.remove();
 
-      element1.animate({'left': winWidth*0.5 - element1Width},element1FlowWidth*flowTimeGuide/winWidth,'linear',
+      element1.animate({'left': winWidth*0.5 - element1Width},flowTimeGuide,'linear',
       function(){
         element1.removeAttr('id').attr('id', 'product_center');
       });
-      element2.animate({'left':winWidth*0.89},element2FlowWidth*flowTimeGuide/winWidth,'linear',
+      element2.animate({'left':winWidth*0.89},flowTimeGuide,'linear',
       function(){
         element2.removeAttr('id').attr('id', 'product_right');
-        defer.resolve();
       });
-      element3.animate({'left': winWidth},element3FlowWidth*flowTimeGuide/winWidth,'linear',
+      element3.animate({'left': winWidth},flowTimeGuide,'linear',
       function(){
         if (elementQuantity <=3) {
           // 商品数が３つのときに実行される
@@ -463,11 +462,12 @@ $(function () {
         }
       });
       setTimeout(function(){
-        cloneElement.animate({'left': -0.592*cloneWidth}, cloneFlowWidth*flowTimeGuide/winWidth,'linear',
+        cloneElement.animate({'left': -0.592*cloneWidth}, 0.5*flowTimeGuide,'linear',
         function(){
           cloneElement.removeAttr('id').attr('id', 'product_left');
+          defer.resolve();
         });
-      }, 0.5*element1FlowWidth*flowTimeGuide/winWidth);
+      }, 0.5*flowTimeGuide);
       return defer.promise();
     }
  }
