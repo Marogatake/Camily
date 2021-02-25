@@ -396,7 +396,7 @@ main{
   margin-left: 7.78vw;
 }
 .story__left-small{
-  width: 80%;
+  /* width: 80%; */
   margin: auto;
 }
 .story__left-arrow{
@@ -410,7 +410,7 @@ main{
   display: none;
 }
 .story__left-big{
-  width: 55.6%;
+  /* width: 55.6%; */
   margin: auto;
 }
 .story__left img{

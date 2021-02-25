@@ -22,6 +22,8 @@ $(function(){
   faqPosition = faqTitle.offset().top + faqTitle.height() *0.5 ;
   // 初期設定
   storyText.add(sceneText).css({'opacity':'0','marginLeft':'-15px'});
+  $('#before_img').animate({'width':'29.4vw'},0);
+  $('#after_img').animate({'width':'20.43vw'},0);
   resetChar(storyTitle);
   resetChar(sceneTitle);
   resetChar(productTitle);
@@ -37,13 +39,13 @@ $(function(){
         if (900 < winWidth) {
           setTimeout(function(){
             charOneByOne(storyTitle);
-            storyText.animate({'opacity':'1','marginLeft':'0'},800);
+            storyText.animate({'opacity':'1','marginLeft':'0'},800, 'linear', function(){
+              // $('#before_img').animate({'width':'20.43vw'},1300);
+              // $('#after_img').animate({'width':'29.4vw'},1300);
+            });
           },300);
-          setTimeout(function(){
-            $('#before').animate({'width':'55.6%'},1300);
-            $('#after').animate({'width':'80%'},1300);
-          },500)
-        }else if (winWidth <= 900) {
+        }
+        else if (winWidth <= 900) {
           setTimeout(function(){
             charOneByOne(storyTitle);
             storyText.animate({'opacity':'1','marginLeft':'0'},800);
