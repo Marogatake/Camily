@@ -309,15 +309,19 @@ $(function () {
   function countdownProduct() {
    resetCountdown();
    centerElementNumber = $('#product_center').data('number');
-   $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
+   $('.product__top-button li').eq(centerElementNumber).find('.chart-meter')
+   .css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
    firstCount = setTimeout(function(){
      $('.product__top-button li').eq(centerElementNumber).css({'background':'linear-gradient(90deg,#110603 0%,#110603 50%,#e6e7e9 50%,#e6e7e9 100%'});
-     $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,#110603 50%,#110603 100%');
+     $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter')
+     .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,#110603 50%,#110603 100%');
    },4500);
    secondCount = setTimeout(function(){
      $('.product__top-button li').eq(centerElementNumber).css({'background':'linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%'});
-     $('.product__top-button li').eq(centerElementNumber).find('.chart-meter').css({'transform':'rotate(0deg)','transition':'0s'});
-     $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter').css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
+     $('.product__top-button li').eq(centerElementNumber).find('.chart-meter')
+     .css({'transform':'rotate(0deg)','transition':'0s'});
+     $('.product__top-button li').eq(centerElementNumber).find('.chart-submeter')
+     .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
    },9000);
  }
 
@@ -376,7 +380,6 @@ $(function () {
       element3.animate({'left': winWidth*0.5 - element3Width},flowTimeGuide,'linear',
       function(){
         element3.removeAttr('id').attr('id', 'product_center');
-        defer.resolve();
       });
       setTimeout(function(){
         if (elementQuantity <= 3) {
@@ -399,7 +402,7 @@ $(function () {
               defer.resolve();
           });
         }
-      }, 0.6*flowTimeGuide);
+      }, 0.55*flowTimeGuide);
       return defer.promise();
     }
  }
@@ -467,7 +470,7 @@ $(function () {
           cloneElement.removeAttr('id').attr('id', 'product_left');
           defer.resolve();
         });
-      }, 0.5*flowTimeGuide);
+      }, 0.55*flowTimeGuide);
       return defer.promise();
     }
  }
