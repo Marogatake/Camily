@@ -397,6 +397,7 @@ main{
 }
 .story__left-small{
   /* width: 80%; */
+  width: 55.6%;
   margin: auto;
 }
 .story__left-arrow{
@@ -411,6 +412,7 @@ main{
 }
 .story__left-big{
   /* width: 55.6%; */
+  width: 80%;
   margin: auto;
 }
 .story__left img{
@@ -444,12 +446,6 @@ main{
   .story__left{
     width: 34%;
     margin-left: 6.6vw;
-  }
-  .story__left-small{
-    width: 80%;
-  }
-  .story__left-big{
-    width: 55.6%;
   }
   .story__right h2{
     font-size: 30px;
@@ -801,7 +797,7 @@ main{
   border: 1px solid #706e6d;
   cursor: pointer;
 }
-/* 商品数に応じて以下の:nth-child(-n+8)は調整 */
+/* 商品数に応じて以下の:nth-child(-n+8)を調整(要素数７のときは-n+８) */
 .product__top-button li:nth-child(n+2):nth-child(-n+8){
   background:linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%);
 }
