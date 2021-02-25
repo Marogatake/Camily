@@ -36,6 +36,23 @@ $(function () {
     productTextHeight = $('.product__top-text').height();
   });
   // checkFrag = setInterval(function(){console.log(cancelFlag);},100);
+  observeInterval = setInterval(function(){
+    if (cancelFlag == 1) {
+      helpFlag1 += 1;
+      helpFlag2 = 0;
+      if (helpFlag1 >= 4) {
+        cancelFlag = 0;
+        helpFlag1 = 0;
+      }
+    }else {
+      helpFlag1 = 0;
+      helpFlag2 += 1;
+      if (helpFlag2 >= 5) {
+        NextSlider();
+        helpFlag2 = 0;
+      }
+    }
+  },2000);
 
   interval = setTimeout(function(){NextSlider();}, 9000);
   centerElementNumber = $('#product_center').attr('class').replace('slider','');
@@ -54,32 +71,34 @@ $(function () {
     interval = setTimeout(function(){NextSlider();}, 9000);
     countdownProduct();
     // checkFrag = setInterval(function(){console.log(cancelFlag);},100);
+    observeInterval = setInterval(function(){
+      if (cancelFlag == 1) {
+        helpFlag1 += 1;
+        helpFlag2 = 0;
+        if (helpFlag1 >= 4) {
+          cancelFlag = 0;
+          helpFlag1 = 0;
+        }
+      }else {
+        helpFlag1 = 0;
+        helpFlag2 += 1;
+        if (helpFlag2 >= 5) {
+          NextSlider();
+          helpFlag2 = 0;
+        }
+      }
+    },2000);
+
   });
   $(window).bind("blur", function(){
     clearInterval(interval);
     resetCountdown();
     // clearInterval(checkFrag);
-    cancelFlag = 0;
+    clearInterval(observeInterval);
+    cancelFlag = 0, helpFlag1 = 0, helpFlag2 = 0;
   });
   $(window).scrollLeft(0);
 
-  setInterval(function(){
-    if (cancelFlag == 1) {
-      helpFlag1 += 1;
-      helpFlag2 = 0;
-      if (helpFlag1 >= 4) {
-        cancelFlag = 0;
-        helpFlag1 = 0;
-      }
-    }else {
-      helpFlag1 = 0;
-      helpFlag2 += 1;
-      if (helpFlag2 >= 5) {
-        NextSlider();
-        helpFlag2 = 0;
-      }
-    }
-  },2000);
 
   $('#prev').click(function(){
     PrevSlider();
@@ -117,7 +136,7 @@ $(function () {
       clearInterval(interval);
       resetCountdown();
 
-      var flowTimeGuide = 1000,
+      var flowTimeGuide = 700,
       element1 = $('#product_left'),
       element2 = $('#product_center'),
       element3 = $('#product_right'),
@@ -158,7 +177,7 @@ $(function () {
         interval = setTimeout(function(){NextSlider();}, 9000);
         countdownProduct();
         textChangeAct();
-        setTimeout(function(){cancelFlag = 0;},1020);
+        setTimeout(function(){cancelFlag = 0;},1100);
       });
       setTimeout(function(){
         if (elementQuantity <= 3) {
@@ -179,7 +198,7 @@ $(function () {
             cloneElement.removeAttr('id').attr('id', 'product_add4');
           });
         }
-      }, element3FlowWidth*flowTimeGuide/winWidth);
+      }, 0.7*element3FlowWidth*flowTimeGuide/winWidth);
     }
   }
 
@@ -189,7 +208,7 @@ $(function () {
       clearInterval(interval);
       resetCountdown();
 
-      var flowTimeGuide = 1000,
+      var flowTimeGuide = 700,
       element1 = $('#product_left'),
       element2 = $('#product_center'),
       element3 = $('#product_right'),
@@ -232,7 +251,7 @@ $(function () {
         interval = setTimeout(function(){NextSlider();}, 9000);
         countdownProduct();
         textChangeAct();
-        setTimeout(function(){cancelFlag = 0;},1020);
+        setTimeout(function(){cancelFlag = 0;},1100);
       });
       element3.animate({'left': winWidth},element3FlowWidth*flowTimeGuide/winWidth,'linear',
       function(){
@@ -317,7 +336,7 @@ $(function () {
   function flowToNext() {
     return function(){
       var defer = $.Deferred();
-      var flowTimeGuide = 900,
+      var flowTimeGuide = 550,
       element1 = $('#product_left'),
       element2 = $('#product_center'),
       element3 = $('#product_right'),
@@ -388,7 +407,7 @@ $(function () {
   function flowToPrev() {
     return function(){
       var defer = $.Deferred();
-      var flowTimeGuide = 900,
+      var flowTimeGuide = 500,
       element1 = $('#product_left'),
       element2 = $('#product_center'),
       element3 = $('#product_right'),
@@ -472,7 +491,7 @@ $(function () {
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
          textChangeAct();
-         setTimeout(function(){cancelFlag = 0;},1020);
+         setTimeout(function(){cancelFlag = 0;},1100);
        });
      }else if (0 < numberDifference && numberDifference  <= 5) {
        var deferred = $.Deferred().resolve();
@@ -483,7 +502,7 @@ $(function () {
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
          textChangeAct();
-         setTimeout(function(){cancelFlag = 0;},1020);
+         setTimeout(function(){cancelFlag = 0;},1100);
        });
      }else if (numberDifference == 0) {
        setTimeout(function(){
@@ -500,7 +519,7 @@ $(function () {
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
          textChangeAct();
-         setTimeout(function(){cancelFlag = 0;},1020);
+         setTimeout(function(){cancelFlag = 0;},1100);
        });
      }else if (numberDifference < -5) {
        var deferred = $.Deferred().resolve();
@@ -511,7 +530,7 @@ $(function () {
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
          textChangeAct();
-         setTimeout(function(){cancelFlag = 0;},1020);
+         setTimeout(function(){cancelFlag = 0;},1100);
        });
      }
    }
