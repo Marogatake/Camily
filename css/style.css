@@ -794,7 +794,7 @@ main{
   border-radius: 50%;
   overflow: hidden;
   margin: 0 2vw;
-  border: 1px solid #706e6d;
+  border: 2px solid #706e6d;
   cursor: pointer;
 }
 /* 商品数に応じて以下の:nth-child(-n+8)を調整(要素数７のときは-n+８) */
