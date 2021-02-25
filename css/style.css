@@ -832,12 +832,12 @@ main{
   content: "";
   position: absolute;
   border-radius: 50%;
-  left: 8%;
-  top: 8%;
-  width: 84%;
-  height: 84%;
+  left: 12%;
+  top: 12%;
+  width: 76%;
+  height: 76%;
   background:#e6e7e9;
-  line-height: 37.8px;
+  line-height: 34.2px;
 }
 .product__bottom img{
   width: 100%;
@@ -1024,7 +1024,7 @@ main{
     margin: 0 1vw;
   }
   .product__top-button li .chart-value{
-    line-height: 24px;
+    line-height: 22.8px;
   }
   .product__bottom{
     margin-top: 4vw;
