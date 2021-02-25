@@ -399,7 +399,7 @@ $(function () {
               defer.resolve();
           });
         }
-      }, 0.5*flowTimeGuide);
+      }, 0.6*flowTimeGuide);
       return defer.promise();
     }
  }
