@@ -1,29 +1,37 @@
 $(function () {
   winWidth = $(window).width();
-  $(window).resize(function() {
+  $(window).on('resize', function() {
     winWidth = $(window).width();
   });
 
   // .mvの動き
+  var mvImg1 = $('#first_img'),
+  mvImg2 = $('#second_img');
   setInterval(function(){
-    img1Display = $('#first_img').css('display'),
-    img2Display = $('#second_img').css('display');
-    if (img1Display == 'none') {
-      $('#first_img').fadeIn(1000);
-      $('#second_img').fadeOut(500);
-    }else if (img2Display == 'none') {
-      $('#first_img').fadeOut(500);
-      $('#second_img').fadeIn(1000);
+    if (mvImg1.css('display') == 'none') {
+      mvImg1.fadeIn(1000);
+      mvImg2.fadeOut(500);
+    }else{
+      mvImg1.fadeOut(500);
+      mvImg2.fadeIn(1000);
     }
   },8000);
 
   // .slickの動き
+  var slideItems = $('#slide_items'),
+  elementWidth = slideItems.children().width();
+  var resizedSlick = null;
+  $(window).on('resize', function() {
+    clearTimeout( resizedSlick );
+    resizedSlick = setTimeout(function() {
+      elementWidth = slideItems.children().width();
+    });
+  });
   setInterval(function(){
-    var elementWidth = $('#slide_items li').width(),
     flowWidth = elementWidth * 5;
-    $('#slide_items').animate({'marginLeft': - flowWidth},
+    slideItems.animate({'marginLeft': - flowWidth},
     65000, 'linear',
-    function(){$('#slide_items').css('marginLeft','0');});
+    function(){slideItems.css('marginLeft','0');});
   }, 600);
 
   // .productの動き
@@ -34,9 +42,10 @@ $(function () {
   productNumButton = $('.product__top-button').children(),
   cancelFlag = 0;
   productTextHeight = productText.height();
-  $(window).resize(function() {
-    clearTimeout( resized );
-    resized = setTimeout(function() {
+  var resizedProduct = null;
+  $(window).on('resize', function() {
+    clearTimeout( resizedProduct );
+    resizedProduct = setTimeout(function() {
       productTextHeight = productText.height();
     });
   });
@@ -57,7 +66,7 @@ $(function () {
     productNumButton.eq(centerElementNumber).find('.chart-submeter')
     .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
   },9000);
-  
+
   $(window).bind("focus", function(){
     interval = setTimeout(function(){NextSlider();}, 9000);
     countdownProduct();
@@ -69,34 +78,34 @@ $(function () {
   });
   $(window).scrollLeft(0);
 
-  $('#prev').click(function(){
+  $('#prev').on('click', function(){
     PrevSlider();
   });
-  $('#next').click(function(){
+  $('#next').on('click', function(){
     NextSlider();
   });
 
-  $('#num1').click(function(){
+  $('#num1').on('click', function(){
     clickNumButton($('#num1'));
   });
-  $('#num2').click(function(){
+  $('#num2').on('click', function(){
     clickNumButton($('#num2'));
   });
-  $('#num3').click(function(){
+  $('#num3').on('click', function(){
     clickNumButton($('#num3'));
   });
-  // $('#num4').click(function(){
-  //   clickNumButton($('#num4'));
-  // });
-  // $('#num5').click(function(){
-  //   clickNumButton($('#num5'));
-  // });
-  // $('#num6').click(function(){
-  //   clickNumButton($('#num6'));
-  // });
-  // $('#num7').click(function(){
-  //   clickNumButton($('#num7'));
-  // });
+  $('#num4').on('click', function(){
+    clickNumButton($('#num4'));
+  });
+  $('#num5').on('click', function(){
+    clickNumButton($('#num5'));
+  });
+  $('#num6').on('click', function(){
+    clickNumButton($('#num6'));
+  });
+  $('#num7').on('click', function(){
+    clickNumButton($('#num7'));
+  });
 
   function NextSlider() {
     if (cancelFlag == 0) {

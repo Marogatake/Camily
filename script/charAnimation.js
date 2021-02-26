@@ -4,7 +4,7 @@ $(function(){
   scroll,runPositon,
   reloadFlag = 0,
   subReloadFlag = 0;
-  $(window).resize(function() {
+  $(window).on('resize',function(){
     winWidth = $(window).width(),
     winHeight = $(window).height();
   });
@@ -19,7 +19,7 @@ $(function(){
   scenePosition = sceneTitle.offset().top + sceneTitle.height() *0.5,
   productPosition = productTitle.offset().top + productTitle.height() *0.5,
   assesmentPosition = assesmentTitle.offset().top + assesmentTitle.height() *0.5,
-  faqPosition = faqTitle.offset().top + faqTitle.height() *0.5 ;
+  faqPosition = faqTitle.offset().top + faqTitle.height() *0.5;
   // 初期設定
   storyText.add(sceneText).css({'opacity':'0','marginLeft':'-15px'});
   resetChar(storyTitle);
@@ -83,6 +83,7 @@ $(function(){
       object.children('span').eq(i).animate({'opacity':'1'}, 500 * ( i + 1) );
     }
   }
+  
   // assessmentの動き
   for (var i = 5; i < 7; i++) {
     $('.assessment__wrap li').eq(i).fadeOut(0);
