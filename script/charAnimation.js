@@ -2,12 +2,6 @@ $(function(){
   var winHeight = $(window).height(),
   winWidth = $(window).width(),
   scroll,runPositon,
-  reloadFlag = 0,
-  subReloadFlag = 0;
-  $(window).on('resize',function(){
-    winWidth = $(window).width(),
-    winHeight = $(window).height();
-  });
   storyTitle = $('#fadein_title_story'),
   sceneTitle = $('#fadein_title_scene'),
   productTitle = $('#fadein_title_product'),
@@ -20,6 +14,16 @@ $(function(){
   productPosition = productTitle.offset().top + productTitle.height() *0.5,
   assesmentPosition = assesmentTitle.offset().top + assesmentTitle.height() *0.5,
   faqPosition = faqTitle.offset().top + faqTitle.height() *0.5;
+
+  var resizeChar = null;
+  $(window).on('resize',function(){
+    clearTimeout( resizeChar );
+    resizeChar = setTimeout(function() {
+      winWidth = $(window).width(),
+      winHeight = $(window).height();
+    });
+  });
+
   // 初期設定
   storyText.add(sceneText).css({'opacity':'0','marginLeft':'-15px'});
   resetChar(storyTitle);
@@ -27,10 +31,11 @@ $(function(){
   resetChar(productTitle);
   resetChar(assesmentTitle);
   resetChar(faqTitle);
-  var timer = null;
+
+  var scrollChar = null;
   $(window).on('scroll',function() {
-    clearTimeout( timer );
-    timer = setTimeout(function() {
+    clearTimeout( scrollChar );
+    scrollChar = setTimeout(function() {
       scroll = $(window).scrollTop();
       runPositon =scroll + winHeight * 0.65;
       if ( runPositon >= storyTitlePosition) {
@@ -83,24 +88,24 @@ $(function(){
       object.children('span').eq(i).animate({'opacity':'1'}, 500 * ( i + 1) );
     }
   }
-  
+
   // assessmentの動き
+  var assesmentContent = $('#assessment_content'),
+  assessmentButton = $('#assessment_button');
   for (var i = 5; i < 7; i++) {
-    $('.assessment__wrap li').eq(i).fadeOut(0);
+    assesmentContent.children().eq(i).fadeOut(0);
   }
-  $('.assessment__header span').click(function(){
-    if ($('.assessment__wrap li').hasClass('show')) {
-    for (var i = 5; i < 7; i++) {
-      $('.assessment__wrap li').eq(i).fadeOut(150*i);
-      $('.assessment__wrap li').eq(i).removeClass('show');
+  assessmentButton.on('click', function(){
+    if (assesmentContent.children().hasClass('show')) {
+      for (var i = 5; i < 7; i++) {
+        assesmentContent.children().eq(i).fadeOut(150*i).removeClass('show');
+      }
+      assessmentButton.css({'transform':'rotate(0deg)','transition':'1s'});
+    }else {
+      for (var i = 5; i < 7; i++) {
+        assesmentContent.children().eq(i).fadeIn(150*i).addClass('show');
+      }
+      assessmentButton.css({'transform':'rotate(180deg)','transition':'1s'});
     }
-    $('.assessment__header span').css({'transform':'rotate(0deg)','transition':'1s'})
-  }else {
-    for (var i = 5; i < 7; i++) {
-      $('.assessment__wrap li').eq(i).fadeIn(150*i);
-      $('.assessment__wrap li').eq(i).addClass('show');
-    }
-    $('.assessment__header span').css({'transform':'rotate(180deg)','transition':'1s'})
-  }
   });
 });

@@ -252,7 +252,7 @@ main{
 @media screen and (max-width:900px) {
   .news__wrap{
     width: 80%;
-}
+  }
 }
 @media screen and (max-width:600px){
   .news__content{
@@ -366,9 +366,7 @@ main{
   .news__wrap{
     width: 80%;
     box-sizing: border-box;
-    margin-top: 50vw;
-    margin-bottom: 15vw;
-    border-radius: 10px;
+    margin-top: 30vw;
   }
   .news__wrap dl{
     width: 100%;
@@ -671,7 +669,6 @@ main{
 }
 .slider2{
   width: 30.39vw;
-  position: relative;
 }
 .slider3{
   width: 22.89vw;
@@ -986,15 +983,14 @@ main{
   }
   .product__top-text{
     order: 3;
-    width: 70%;
+    width: 65%;
     height: auto;
     bottom: 0;
-    margin-left: 0;
-    margin: auto;
+    margin-left: 25vw;
   }
   .product__top-text .num{
-    top: -70vw;
-    left: -5vw;
+    top: 0;
+    left: -18vw;
     height: 11.28vw;
     width: 13.89vw;
   }
@@ -1065,8 +1061,6 @@ main{
   .product__wrap{
     width: 100%;
     box-sizing: border-box;
-    padding-top: 25vw;
-    padding-bottom: 15vw;
   }
 @media screen and (max-width:700px){
   .product__bottom-text{
@@ -1090,6 +1084,7 @@ main{
 }
 @media screen and (max-width: 600px){
   .product__top-text{
+    width: 90%;
     margin: 0 auto;
   }
   .product__top-text h3{
@@ -1100,7 +1095,7 @@ main{
     line-height: 25px;
   }
   .product__top-text .num{
-    left: 5;
+    display: none!important;
   }
   .product__top-button li{
     margin: 0 0.5vw;
@@ -1229,8 +1224,6 @@ main{
   .assessment__wrap{
     width: 100%;
     box-sizing: border-box;
-    padding-top: 20vw;
-    padding-bottom: 15vw;
   }
   .assessment__header{
     width: 80%;

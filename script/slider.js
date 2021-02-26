@@ -233,49 +233,49 @@ $(function () {
     productText.css('min-height', productTextHeight);
     productText.children().fadeOut(500).queue(function(){
       productText.html('').html(nextHTML);
-      productText.children().css('display','none');
-      productText.children().fadeIn(500);
+      productText.children().css('display','none').fadeIn(500);
+      productText.css('min-height', 'auto');
     });
   }
 
   function textChangeAct() {
-   centerClass = $('#product_center').attr('class');
-   if (centerClass == 'slider1') {
-     textChange($('#folded1'));
-   }else if (centerClass == 'slider2') {
-     textChange($('#folded2'));
-   }else if (centerClass == 'slider3') {
-     textChange($('#folded3'));
-   }
-   // 商品数に合わせて以下の書き換え(以下は商品数 7のときの例)
-   else if (centerClass == 'slider4') {
-     textChange($('#folded4'));
-   }else if (centerClass == 'slider5') {
-     textChange($('#folded5'));
-   }else if (centerClass == 'slider6') {
-     textChange($('#folded6'));
-   }else if (centerClass == 'slider7') {
-     textChange($('#folded7'));
-   }
+    centerClass = $('#product_center').attr('class');
+    if (centerClass == 'slider1') {
+      textChange($('#folded1'));
+    }else if (centerClass == 'slider2') {
+      textChange($('#folded2'));
+    }else if (centerClass == 'slider3') {
+      textChange($('#folded3'));
+    }
+    // 商品数に合わせて以下の書き換え(以下は商品数 7のときの例)
+    else if (centerClass == 'slider4') {
+      textChange($('#folded4'));
+    }else if (centerClass == 'slider5') {
+      textChange($('#folded5'));
+    }else if (centerClass == 'slider6') {
+      textChange($('#folded6'));
+    }else if (centerClass == 'slider7') {
+      textChange($('#folded7'));
+    }
  }
 
   function countdownProduct() {
-  resetCountdown();
-   centerElementNumber = $('#product_center').data('number');
-   productNumButton.eq(centerElementNumber).find('.chart-meter')
-   .css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
-   firstCount = setTimeout(function(){
-     productNumButton.eq(centerElementNumber).css({'background':'linear-gradient(90deg,#110603 0%,#110603 50%,#e6e7e9 50%,#e6e7e9 100%'});
-     productNumButton.eq(centerElementNumber).find('.chart-submeter')
-     .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,#110603 50%,#110603 100%');
-   },4500);
-   secondCount = setTimeout(function(){
-     productNumButton.eq(centerElementNumber).css({'background':'linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%'});
-     productNumButton.eq(centerElementNumber).find('.chart-meter')
-     .css({'transform':'rotate(0deg)','transition':'0s'});
-     productNumButton.eq(centerElementNumber).find('.chart-submeter')
-     .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
-   },9000);
+    resetCountdown();
+    centerElementNumber = $('#product_center').data('number');
+    productNumButton.eq(centerElementNumber).find('.chart-meter')
+    .css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
+    firstCount = setTimeout(function(){
+      productNumButton.eq(centerElementNumber).css({'background':'linear-gradient(90deg,#110603 0%,#110603 50%,#e6e7e9 50%,#e6e7e9 100%'});
+      productNumButton.eq(centerElementNumber).find('.chart-submeter')
+      .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,#110603 50%,#110603 100%');
+    },4500);
+    secondCount = setTimeout(function(){
+      productNumButton.eq(centerElementNumber).css({'background':'linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%'});
+      productNumButton.eq(centerElementNumber).find('.chart-meter')
+      .css({'transform':'rotate(0deg)','transition':'0s'});
+      productNumButton.eq(centerElementNumber).find('.chart-submeter')
+      .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
+    },9000);
  }
 
   function resetCountdown() {
