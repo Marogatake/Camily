@@ -42,8 +42,22 @@ $(function () {
   });
 
   interval = setTimeout(function(){NextSlider();}, 9000);
-  countdownProduct();
-
+  centerElementNumber = $('#product_center').data('number');
+  productNumButton.eq(centerElementNumber).find('.chart-meter')
+  .css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
+  firstCount = setTimeout(function(){
+    productNumButton.eq(centerElementNumber).css({'background':'linear-gradient(90deg,#110603 0%,#110603 50%,#e6e7e9 50%,#e6e7e9 100%'});
+    productNumButton.eq(centerElementNumber).find('.chart-submeter')
+    .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,#110603 50%,#110603 100%');
+  },4500);
+  secondCount = setTimeout(function(){
+    productNumButton.eq(centerElementNumber).css({'background':'linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%'});
+    productNumButton.eq(centerElementNumber).find('.chart-meter')
+    .css({'transform':'rotate(0deg)','transition':'0s'});
+    productNumButton.eq(centerElementNumber).find('.chart-submeter')
+    .css('background','linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%');
+  },9000);
+  
   $(window).bind("focus", function(){
     interval = setTimeout(function(){NextSlider();}, 9000);
     countdownProduct();
@@ -71,18 +85,18 @@ $(function () {
   $('#num3').click(function(){
     clickNumButton($('#num3'));
   });
-  $('#num4').click(function(){
-    clickNumButton($('#num4'));
-  });
-  $('#num5').click(function(){
-    clickNumButton($('#num5'));
-  });
-  $('#num6').click(function(){
-    clickNumButton($('#num6'));
-  });
-  $('#num7').click(function(){
-    clickNumButton($('#num7'));
-  });
+  // $('#num4').click(function(){
+  //   clickNumButton($('#num4'));
+  // });
+  // $('#num5').click(function(){
+  //   clickNumButton($('#num5'));
+  // });
+  // $('#num6').click(function(){
+  //   clickNumButton($('#num6'));
+  // });
+  // $('#num7').click(function(){
+  //   clickNumButton($('#num7'));
+  // });
 
   function NextSlider() {
     if (cancelFlag == 0) {
@@ -92,8 +106,8 @@ $(function () {
 
       var flowTimeGuide = 700,
       element = [0, $('#product_left'), $('#product_center'), $('#product_right'),
-                    $('#product_add1'), $('#product_add2'), $('#product_add3'), $('#product_add4')],
-
+                    // $('#product_add1'), $('#product_add2'), $('#product_add3'), $('#product_add4')
+                  ],
       elementWidth = [parseInt(element[1].css('width'), 10), parseInt(element[2].css('width'), 10), parseInt(element[3].css('width'), 10)],
       elementPosition = [parseInt(element[1].css('left'), 10), parseInt(element[2].css('left'), 10), parseInt(element[3].css('left'), 10)];
       if (winWidth <= 1300) {
@@ -131,15 +145,15 @@ $(function () {
           });
         }else if (elementQuantity > 3) {
           // 商品数が３つを越えるときに実行される
-          element[4].animate({'left': winWidth*0.89},cloneFlowWidth*flowTimeGuide/winWidth,'linear',
-          function(){
-            $(this).removeAttr('id').attr('id', 'product_right');
-            // element5以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
-            element[5].removeAttr('id').attr('id', 'product_add1');
-            element[6].removeAttr('id').attr('id', 'product_add2');
-            element[7].removeAttr('id').attr('id', 'product_add3');
-            cloneElement.removeAttr('id').attr('id', 'product_add4');
-          });
+          // element[4].animate({'left': winWidth*0.89},cloneFlowWidth*flowTimeGuide/winWidth,'linear',
+          // function(){
+            // $(this).removeAttr('id').attr('id', 'product_right');
+            // element[5](5つ目の商品)以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
+            // element[5].removeAttr('id').attr('id', 'product_add1');
+            // element[6].removeAttr('id').attr('id', 'product_add2');
+            // element[7].removeAttr('id').attr('id', 'product_add3');
+            // cloneElement.removeAttr('id').attr('id', 'product_add4');
+          // });
         }
       }, 0.7*elementFlowWidth[2]*flowTimeGuide/winWidth);
     }
@@ -153,8 +167,8 @@ $(function () {
 
       var flowTimeGuide = 700,
       element = [0, $('#product_left'), $('#product_center'), $('#product_right'),
-                    $('#product_add1'), $('#product_add2'), $('#product_add3'), $('#product_add4')],
-
+                    // $('#product_add1'), $('#product_add2'), $('#product_add3'), $('#product_add4')
+                  ],
       elementWidth = [parseInt(element[1].css('width'), 10), parseInt(element[2].css('width'), 10), parseInt(element[3].css('width'), 10)],
       elementPosition = [parseInt(element[1].css('left'), 10), parseInt(element[2].css('left'), 10), parseInt(element[3].css('left'), 10)];
       if (winWidth <= 1300) {
@@ -189,10 +203,11 @@ $(function () {
         }else if(elementQuantity > 3){
           // 商品数が３商品数が３つを越えるときに実行される
           $(this).removeAttr('id').attr('id', 'product_add1');
+
           // 最後を除く3番目以降の要素に対して自身の一個後ろのidに書き換える(以下は商品数7のときの例)
-          element[4].removeAttr('id').attr('id', 'product_add2');
-          element[5].removeAttr('id').attr('id', 'product_add3');
-          element[6].removeAttr('id').attr('id', 'product_add4');
+          // element[4].removeAttr('id').attr('id', 'product_add2');
+          // element[5].removeAttr('id').attr('id', 'product_add3');
+          // element[6].removeAttr('id').attr('id', 'product_add4');
         }
       });
       setTimeout(function(){
@@ -236,6 +251,7 @@ $(function () {
  }
 
   function countdownProduct() {
+  resetCountdown();
    centerElementNumber = $('#product_center').data('number');
    productNumButton.eq(centerElementNumber).find('.chart-meter')
    .css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
@@ -269,8 +285,8 @@ $(function () {
       var defer = $.Deferred(),
       flowTimeGuide = 400,
       element = [0, $('#product_left'), $('#product_center'), $('#product_right'),
-                    $('#product_add1'), $('#product_add2'), $('#product_add3'), $('#product_add4')],
-
+                    // $('#product_add1'), $('#product_add2'), $('#product_add3'), $('#product_add4')
+                  ],
       elementWidth = [parseInt(element[1].css('width'), 10), parseInt(element[2].css('width'), 10), parseInt(element[3].css('width'), 10)],
       elementPosition = [parseInt(element[1].css('left'), 10), parseInt(element[2].css('left'), 10), parseInt(element[3].css('left'), 10)];
       if (winWidth <= 1300) {
@@ -304,16 +320,16 @@ $(function () {
           });
         }else if (elementQuantity > 3) {
           // 商品数が３つを越えるときに実行される
-          element[4].animate({'left': winWidth*0.89},0.5*flowTimeGuide,'linear',
-          function(){
-              $(this).removeAttr('id').attr('id', 'product_right');
-              // element5以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
-              element[5].removeAttr('id').attr('id', 'product_add1');
-              element[6].removeAttr('id').attr('id', 'product_add2');
-              element[7].removeAttr('id').attr('id', 'product_add3');
-              cloneElement.removeAttr('id').attr('id', 'product_add4');
-              defer.resolve();
-          });
+          // element[4].animate({'left': winWidth*0.89},0.5*flowTimeGuide,'linear',
+          // function(){
+          //     $(this).removeAttr('id').attr('id', 'product_right');
+          //     // element5以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
+          //     element[5].removeAttr('id').attr('id', 'product_add1');
+          //     element[6].removeAttr('id').attr('id', 'product_add2');
+          //     element[7].removeAttr('id').attr('id', 'product_add3');
+          //     cloneElement.removeAttr('id').attr('id', 'product_add4');
+          //     defer.resolve();
+          // });
         }
       }, 0.55*flowTimeGuide);
       return defer.promise();
@@ -325,8 +341,8 @@ $(function () {
       var defer = $.Deferred(),
       flowTimeGuide = 400,
       element = [0, $('#product_left'), $('#product_center'), $('#product_right'),
-                    $('#product_add1'), $('#product_add2'), $('#product_add3'), $('#product_add4')],
-
+                    // $('#product_add1'), $('#product_add2'), $('#product_add3'), $('#product_add4')
+                  ],
       elementWidth = [parseInt(element[1].css('width'), 10), parseInt(element[2].css('width'), 10), parseInt(element[3].css('width'), 10)],
       elementPosition = [parseInt(element[1].css('left'), 10), parseInt(element[2].css('left'), 10), parseInt(element[3].css('left'), 10)];
       if (winWidth <= 1300) {
@@ -357,10 +373,11 @@ $(function () {
         }else if (elementQuantity > 3) {
           // 商品数が３つを越えるときに実行される
           $(this).removeAttr('id').attr('id', 'product_add1');
+
           // 最後を除く3番目以降の要素に対して自身の一個後ろのidに書き換える(以下は商品数7のときの例)
-          element[4].removeAttr('id').attr('id', 'product_add2');
-          element[5].removeAttr('id').attr('id', 'product_add3');
-          element[6].removeAttr('id').attr('id', 'product_add4');
+          // element[4].removeAttr('id').attr('id', 'product_add2');
+          // element[5].removeAttr('id').attr('id', 'product_add3');
+          // element[6].removeAttr('id').attr('id', 'product_add4');
         }
       });
       setTimeout(function(){
