@@ -252,7 +252,7 @@ main{
 @media screen and (max-width:900px) {
   .news__wrap{
     width: 80%;
-  }
+}
 }
 @media screen and (max-width:600px){
   .news__content{
@@ -328,6 +328,10 @@ main{
   color: #110603;
   font-weight: bold;
 }
+
+.news__content a:hover{
+  opacity: 0.7;
+}
 .news__wrap dt{
   margin: 5px 1.89vw 5px 0;
 }
@@ -357,6 +361,7 @@ main{
   .news__wrap{
     flex-direction: column;
     padding: 20px 0;
+    border-radius: 10px;
   }
   .news__content{
     padding: 10px 20px;
@@ -366,7 +371,9 @@ main{
   .news__wrap{
     width: 80%;
     box-sizing: border-box;
-    margin-top: 30vw;
+    margin-top: 40vw;
+    margin-bottom: 12vw;
+    border-radius: 10px;
   }
   .news__wrap dl{
     width: 100%;
@@ -669,6 +676,7 @@ main{
 }
 .slider2{
   width: 30.39vw;
+  position: relative;
 }
 .slider3{
   width: 22.89vw;
@@ -983,14 +991,15 @@ main{
   }
   .product__top-text{
     order: 3;
-    width: 65%;
+    width: 70%;
     height: auto;
     bottom: 0;
-    margin-left: 25vw;
+    margin-left: 0;
+    margin: auto;
   }
   .product__top-text .num{
-    top: 0;
-    left: -18vw;
+    top: -70vw;
+    left: -5vw;
     height: 11.28vw;
     width: 13.89vw;
   }
@@ -1061,6 +1070,8 @@ main{
   .product__wrap{
     width: 100%;
     box-sizing: border-box;
+    padding-top: 15vw;
+    padding-bottom: 15vw;
   }
 @media screen and (max-width:700px){
   .product__bottom-text{
@@ -1084,8 +1095,8 @@ main{
 }
 @media screen and (max-width: 600px){
   .product__top-text{
-    width: 90%;
     margin: 0 auto;
+    width: 95%;
   }
   .product__top-text h3{
     font-size: 20px;
@@ -1095,7 +1106,7 @@ main{
     line-height: 25px;
   }
   .product__top-text .num{
-    display: none!important;
+    left: 6vw;
   }
   .product__top-button li{
     margin: 0 0.5vw;
@@ -1224,6 +1235,7 @@ main{
   .assessment__wrap{
     width: 100%;
     box-sizing: border-box;
+    padding-bottom: 15vw;
   }
   .assessment__header{
     width: 80%;
@@ -1245,7 +1257,6 @@ main{
 }
 @media screen and (max-width: 600px){
   .assessment__wrap{
-    padding-top: 12vw;
   }
 }
 @media screen and (max-width: 391px){
