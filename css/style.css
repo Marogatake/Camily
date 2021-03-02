@@ -1445,9 +1445,7 @@ main{
 
 @media screen and (max-width: 390px){
   .faq__wrap{
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 90%;
   }
 
   .faq__wrap li:nth-of-type(1){
