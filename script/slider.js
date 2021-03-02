@@ -7,13 +7,17 @@ $(function () {
   // .mvの動き
   var mvImg1 = $('#first_img'),
   mvImg2 = $('#second_img');
+  mvImg3 = $('#third_img');
   setInterval(function(){
-    if (mvImg1.css('display') == 'none') {
+    if (mvImg1.css('display') == 'none' && mvImg2.css('display') == 'none') {
       mvImg1.fadeIn(1000);
-      mvImg2.fadeOut(500);
-    }else{
+      mvImg3.fadeOut(500);
+    }if(mvImg2.css('display') == 'none' && mvImg3.css('display') == 'none'){
       mvImg1.fadeOut(500);
       mvImg2.fadeIn(1000);
+    }if(mvImg3.css('display') == 'none' && mvImg1.css('display') == 'none'){
+      mvImg2.fadeOut(500);
+      mvImg3.fadeIn(1000);
     }
   },8000);
 
@@ -119,7 +123,7 @@ $(function () {
                   ],
       elementWidth = [parseInt(element[1].css('width'), 10), parseInt(element[2].css('width'), 10), parseInt(element[3].css('width'), 10)],
       elementPosition = [parseInt(element[1].css('left'), 10), parseInt(element[2].css('left'), 10), parseInt(element[3].css('left'), 10)];
-      if (winWidth <= 1300) {
+      if (winWidth <= 1320) {
         elementWidth[2] = elementWidth[2]*0.5;
       }
       elementFlowWidth = [elementWidth[0] + elementPosition[0], elementPosition[1] + 0.592*elementWidth[1], elementPosition[2] - winWidth*0.5 + elementWidth[2]];
@@ -180,7 +184,7 @@ $(function () {
                   ],
       elementWidth = [parseInt(element[1].css('width'), 10), parseInt(element[2].css('width'), 10), parseInt(element[3].css('width'), 10)],
       elementPosition = [parseInt(element[1].css('left'), 10), parseInt(element[2].css('left'), 10), parseInt(element[3].css('left'), 10)];
-      if (winWidth <= 1300) {
+      if (winWidth <= 1320) {
         elementWidth[0] = elementWidth[0]*0.5;
       }
       elementFlowWidth = [winWidth*0.5 - elementWidth[0] - elementPosition[0], winWidth*0.89 - elementPosition[1], winWidth*0.11];
@@ -298,7 +302,7 @@ $(function () {
                   ],
       elementWidth = [parseInt(element[1].css('width'), 10), parseInt(element[2].css('width'), 10), parseInt(element[3].css('width'), 10)],
       elementPosition = [parseInt(element[1].css('left'), 10), parseInt(element[2].css('left'), 10), parseInt(element[3].css('left'), 10)];
-      if (winWidth <= 1300) {
+      if (winWidth <= 1320) {
         elementWidth[2] = elementWidth[2]*0.5;
       }
       elementFlowWidth = [elementWidth[0] + elementPosition[0], elementPosition[1] + 0.592*elementWidth[1], elementPosition[2] - winWidth*0.5 + elementWidth[2]];
@@ -354,7 +358,7 @@ $(function () {
                   ],
       elementWidth = [parseInt(element[1].css('width'), 10), parseInt(element[2].css('width'), 10), parseInt(element[3].css('width'), 10)],
       elementPosition = [parseInt(element[1].css('left'), 10), parseInt(element[2].css('left'), 10), parseInt(element[3].css('left'), 10)];
-      if (winWidth <= 1300) {
+      if (winWidth <= 1320) {
         elementWidth[0] = elementWidth[0]*0.5;
       }
       elementFlowWidth = [winWidth*0.5 - elementWidth[0] - elementPosition[0], winWidth*0.89 - elementPosition[1], winWidth*0.11];
