@@ -302,6 +302,12 @@ main{
     height: auto;
   }
 }
+
+@media screen and (max-width: 450px){
+  .mv__wrap{
+    width: 80%;
+  }
+}
 /* news */
 .news__wrap{
   margin: 0 auto;
@@ -617,6 +623,7 @@ main{
     flex-direction: column;
     /* text-align: center; */
     padding-left: 17.78vw;
+    padding-right: 30px;
   }
   .scene__wrap h2{
     font-size: 30px;
@@ -676,14 +683,14 @@ main{
 }
 /* ここで商品の大きさを調節. */
 .slider1{
-  width: 18.67vw;
+  width: 25vw;
 }
 .slider2{
-  width: 30.39vw;
+  width: 29vw;
   position: relative;
 }
 .slider3{
-  width: 22.89vw;
+  width: 20vw;
 }
 /* .slider4{
   width: 25vw;
@@ -701,7 +708,7 @@ main{
   left: -12.8%;
 }
 .product__top-image ul li:nth-child(2){
-  left: 19.83%;
+  left: 25%;
 }
 .product__top-image ul li:nth-child(3){
   left: 89%;
@@ -715,7 +722,7 @@ main{
 .product__top-text{
   background-color: #ffffff;
   width: 35.33vw;
-  height: 23.44vw;
+  height: 28vw;
   position: relative;
   bottom: 29.94vw;
   margin-left: 46.72vw;
@@ -789,7 +796,7 @@ main{
 }
 .product__top-button{
   position: relative;
-  bottom: 19.72vw;
+  bottom: 25vw;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -968,13 +975,13 @@ main{
     height: 52.65vw;
   }
   .slider1{
-    width: 30.72vw;
+    width: 45vw;
   }
   .slider2{
-    width:50vw;
+    width:47vw;
   }
   .slider3{
-    width: 37.66vw;
+    width: 32vw;
   }
   /* .slider4{
     width: 32vw;
@@ -1111,7 +1118,7 @@ main{
     line-height: 25px;
   }
   .product__top-text .num{
-    left: 6vw;
+    left: 15vw;
   }
   .product__top-button li{
     margin: 0 0.5vw;
@@ -1271,6 +1278,13 @@ main{
   }
 }
 
+@media screen and (max-width: 332px){
+  .assessment__header .fa-stack{
+    left: 220px;
+    top: -13px;
+  }
+}
+
 /* faq */
 .faq__wrap{
   width: 68.1%;
@@ -1290,7 +1304,7 @@ main{
 }
 .faq__wrap ul{
   display: flex;
-  justify-content: center;
+  justify-content: left;
   padding-bottom: 50px;
 }
 
@@ -1346,7 +1360,7 @@ main{
 .faq__wrap p:nth-of-type(2){
   padding-top: 31px;
 }
-.a{
+.faq__bottom{
   justify-content: flex-start!important;
 }
 @media screen and (max-width: 1400px){
@@ -1443,26 +1457,32 @@ main{
   }
 }
 
-@media screen and (max-width: 390px){
+@media screen and (max-width: 420px){
   .faq__wrap{
     width: 90%;
   }
 
   .faq__wrap li:nth-of-type(1){
-    width: auto;
+    width: 90%;
+    margin: auto;
   }
 
   .faq__wrap li:nth-of-type(2){
-    width: auto;
+    width: 90%;
+    margin: auto;
   }
 
   .faq__wrap li:nth-of-type(3){
-    width: auto;
+    width: 90%;
+    margin: auto;
   }
 
   .faq__wrap h3::before{
     width: 55px;
     left: -11px;
+  }
+  .faq__sbtitle{
+    padding-bottom: 50px!important;
   }
 }
 
@@ -1473,7 +1493,8 @@ main{
   padding: 5.33% 0 19px 0;
 }
 footer img{
-  width: 6.83%;
+  width: 11%;
+  margin-bottom: 40px;
 }
 .footer__text{
   display: block;
@@ -1492,4 +1513,38 @@ footer img{
     width: 100%;
     box-sizing: border-box;
   }
+}
+
+
+
+/* ---------------------------------------------------------------------------
+
+  スマホ（ブラウザの横幅が指定したpx以下の時に適用されます）
+
+--------------------------------------------------------------------------- */
+@media screen and (max-width : 959px) {
+.faqSubTitle {
+  font-size: 24px !important;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #d8cab9;
+  margin-bottom: 40px;
+}
+}
+
+
+/* ---------------------------------------------------------------------------
+
+  パソコン（ブラウザの横幅が指定したpx以上の時に適用されます）
+
+--------------------------------------------------------------------------- */
+@media screen and (min-width : 960px) {
+.faqSubTitle {
+  font-size: 24px !important;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #d8cab9;
+  margin-bottom: 40px;
+}
+
 }

@@ -46,20 +46,20 @@ $(function(){
               // $('#before_img').animate({'width':'20.43vw'},1300);
               // $('#after_img').animate({'width':'29.4vw'},1300);
             });
-          },300);
+          },100);
         }
         else if (winWidth <= 900) {
           setTimeout(function(){
             charOneByOne(storyTitle);
             storyText.animate({'opacity':'1','marginLeft':'0'},800);
-          },300);
+          },100);
         }
       }
       if ( runPositon >= scenePosition) {
         setTimeout(function(){
           charOneByOne(sceneTitle);
           sceneText.animate({'opacity':'1','marginLeft':'0'},800);
-        },300);
+        },100);
       }
       if ( runPositon >= productPosition) {
         charOneByOne(productTitle);

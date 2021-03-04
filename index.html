@@ -42,28 +42,28 @@
         <div></div>
       </a>
       <nav class="header__right">
-        <ul>
+        <ul id="header_menu">
           <li>
-            <a href="">Story</a>
+            <a>Story</a>
           </li>
           <li>
-            <a href="">Scene</a>
+            <a>Scene</a>
           </li>
           <li>
-            <a href="">Product</a>
+            <a>Product</a>
           </li>
           <li>
-            <a href="">Shoplist</a>
+            <a href="shoplist.php" target="_blank" rel="noopener noreferrer">Shoplist</a>
           </li>
           <li>
-            <a href="">Assessment</a>
+            <a>Assessment</a>
           </li>
           <li>
-            <a href="">FaQ</a>
+            <a>FaQ</a>
           </li>
           <li>
-            <a href="">
-              <img src="images/cart.png" alt="">
+            <a href="xxxxxxxxxx">
+              <img src="images/cart.png" alt="ONLINE SHOP">
             </a>
           </li>
         </ul>
@@ -118,6 +118,7 @@
         </dl>
       </div>
     </section>
+    <a id="target01"></a>
     <section class="story">
       <div class="story__wrap">
         <div class="story__left">
@@ -151,6 +152,7 @@
         </div>
       </div>
     </section>
+    <a id="target02"></a>
     <section class="slick">
       <div class="slick__wrap">
         <ul id="slide_items">
@@ -199,6 +201,7 @@
         </p>
       </div>
     </section>
+    <a id="target03"></a>
     <section class="product">
       <div class="product__wrap">
         <h2 id="fadein_title_product">PRODUCT</h2>
@@ -206,11 +209,11 @@
           <div class="product__top-image">
             <ul id="slider">
               <!-- 一番最後の商品はこのように一番上においてください。その際 id は product_left で固定(コメントアウト部分は商品数 7のときの例) -->
-              <li class="slider3" id="product_left" data-number="3"><img src="images/productbag03.png" alt=""></li>
+              <li class="slider3" id="product_left" data-number="3"><img src="images/productbag01.png" alt=""></li>
               <!-- <li class="slider7" id="product_left" data-number="7"><img src="images/productbag03.png" alt=""></li> -->
 
-              <li class="slider1" id="product_center" data-number="1"><img src="images/productbag01.png" alt=""></li>
-              <li class="slider2" id="product_right" data-number="2"><img src="images/productbag02.png" alt=""></li>
+              <li class="slider1" id="product_center" data-number="1"><img src="images/productbag02.png" alt=""></li>
+              <li class="slider2" id="product_right" data-number="2"><img src="images/productbag03.png" alt=""></li>
               <!-- 商品数に合わせて以下の書き換えを行ってください。(コメントアウト部分は商品数 7のときの例) -->
               <!-- <li class="slider3" id="product_add1" data-number="3"><img src="images/productbag03.png" alt=""></li> -->
               <!-- <li class="slider4" id="product_add2" data-number="4"><img src="images/Q.png" alt=""></li>
@@ -428,6 +431,7 @@
         </div>
       </div>
     </section>
+    <a id="target04"></a>
     <section class="assessment">
       <div class="assessment__wrap">
           <div class="assessment__header">
@@ -460,9 +464,11 @@
           </ul>
       </div>
     </section>
+    <a id="target05"></a>
     <section class="faq">
       <div class="faq__wrap">
         <h2 id="fadein_title_faq">FAQ</h2>
+        <p class="faqSubTitle">製品について</p>
         <ul>
           <li>
             <h3>何kgまでの荷物を運べますか？</h3>
@@ -473,17 +479,12 @@
             <p>人や動物は乗せないでください。<br />破損や事故のおそれがあります。</p>
           </li>
           <li>
-            <h3>試乗できるお店はありますか？</h3>
-            <p><a href="">SHOP</a>をご確認ください。</p>
-          </li>
-        </ul>
-        <ul>
-          <li>
             <h3>バッグは防水仕様ですか？</h3>
             <p>防水に強いターポリン生地を使用しておりますが、ファスナー部分から水が染み込む可能性もございます。<br />
             雨天時の利用はなるべく避けて頂くようにお願い致します。</p>
           </li>
-        
+        </ul>
+        <ul>
           <li>
             <h3>歩道、自転車専用道路は走行できますか？</h3>
             <p>軽車両扱いとなる為、車道走行のみとなります。<br />
@@ -500,28 +501,38 @@
             下記条件では走行しないでください。<br />
             ●大きな段差や溝・凹凸の激しい路面</p>
           </li>
-        </ul>
-        <ul>
           <li>
             <h3>自転車以外に取り付けは可能ですか？</h3>
             <p>自転車以外での取付けての使用は想定しておりません。<br />
             破損や事故、ケガのおそれがあります。</p>
           </li>
+        </ul>
+        <ul>
           <li>
-            <h3>二段式の駐輪場や停める位置が決まっている駐輪場では、どのようにしたら良いですか？</h3>
+            <h3 class="faq__sbtitle">タイヤのバルブ（空気を入れる金具部分）はどのような仕様ですか？</h3>
+            <p>米式バルブです。<br />
+            英式バルブへの変換プラグも付属しております。</p>
+          </li>
+          <li>
+            <h3 class="faq__sbtitle">二段式の駐輪場や停める位置が決まっている駐輪場では、どのようにしたら良いですか？</h3>
             <p>停める前にアタッチメントからトレーラーを外していただくとスムースです。</p>
+          </li>
+          <li>
+
+          </li>
+        </ul>
+        <p class="faqSubTitle">購入について</p>
+        <ul class="faq__bottom">
+          <li>
+            <h3>試乗できるお店はありますか？</h3>
+            <p><a href="">SHOP</a>をご確認ください。</p>
           </li>
           <li>
             <h3>どこで取り扱っていますか？</h3>
             <p><a href="">SHOP</a>をご確認ください。</p>
           </li>
-          
-        </ul>
-        <ul class="a">
           <li>
-            <h3>タイヤのバルブ（空気を入れる金具部分）はどのような仕様ですか？</h3>
-            <p>米式バルブです。<br />
-            英式バルブへの変換プラグも付属しております。</p>
+
           </li>
         </ul>
       </div>
@@ -529,8 +540,8 @@
   </main>
   <footer>
     <div class="footer__wrap">
-      <img src="images/footerlogo.png" alt="">
-      <span class="footer__text">about us</span>
+      <a href="https://ogk.co.jp/" target="_blank"><img src="images/footerlogo.png" alt="PRODUCT BY OGK"></a>
+      <!-- <span class="footer__text">about us</span> -->
       <span class="footer__copy">copyright ©️ All Right Reserved. </span>
     </div>
   </footer>
