@@ -1,33 +1,17 @@
 $(function () {
   var winWidth = $(window).width(),
   navBox = $('#header_menu'),
-  productText = $('#product_text'),
-  storyPosition = $('#fadein_title_story').offset().top,
-  scenePosition = $('#fadein_title_scene').offset().top,
-  productPosition = $('#fadein_title_product').offset().top,
-  assesmentPosition = $('#fadein_title_assessment').offset().top,
-  faqPosition = $('#fadein_title_faq').offset().top;
-
+  story = $('#fadein_title_story'),
+  scene = $('#fadein_title_scene'),
+  product = $('#fadein_title_product'),
+  assessment = $('#fadein_title_assessment'),
+  faq = $('#fadein_title_faq');
   var resizeNav = null;
   $(window).on('resize',function(){
     clearTimeout( resizeNav );
-    resizeNav = setTimeout(function() {
-      winWidth = $(window).width(),
-      storyPosition = $('#fadein_title_story').offset().top,
-      scenePosition = $('#fadein_title_scene').offset().top,
-      productPosition = $('#fadein_title_product').offset().top,
-      assesmentPosition = $('#fadein_title_assessment').offset().top,
-      faqPosition = $('#fadein_title_faq').offset().top;
+    resizeNav = setTimeout(function(){
+      winWidth = $(window).width();
     });
-  });
-
-  productText.on('change',function(){
-    winWidth = $(window).width(),
-    storyPosition = $('#fadein_title_story').offset().top,
-    scenePosition = $('#fadein_title_scene').offset().top,
-    productPosition = $('#fadein_title_product').offset().top,
-    assesmentPosition = $('#fadein_title_assessment').offset().top,
-    faqPosition = $('#fadein_title_faq').offset().top;
   });
 
   $('.nav-btn').on('click',function(){
@@ -48,22 +32,24 @@ $(function () {
   });
 
   navBox.children().eq(0).on('click', function(){
-    navScroll(storyPosition);
+    navScroll(story);
   });
   navBox.children().eq(1).on('click', function(){
-    navScroll(scenePosition);
+    navScroll(scene);
   });
   navBox.children().eq(2).on('click', function(){
-    navScroll(productPosition);
+    navScroll(product);
   });
   navBox.children().eq(4).on('click', function(){
-    navScroll(assesmentPosition);
+    navScroll(assessment);
   });
   navBox.children().eq(5).on('click', function(){
-    navScroll(faqPosition);
+    navScroll(faq);
   });
 
-  function navScroll(objectPosition) {
+  function navScroll(object) {
+    winWidth = $(window).width();
+    objectPosition = object.offset().top;
     if (winWidth<=800) {
       if( $('.nav-btn').hasClass('active') ){
         $('.nav-btn').removeClass('active');
