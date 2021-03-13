@@ -13,7 +13,6 @@ $(function () {
       winWidth = $(window).width();
     });
   });
-
   $('.nav-btn').on('click',function(){
     if (winWidth<=800) {
       if( $(this).hasClass('active') ){
@@ -30,7 +29,6 @@ $(function () {
       }
     }
   });
-
   navBox.children().eq(0).on('click', function(){
     navScroll(story);
   });
@@ -46,7 +44,6 @@ $(function () {
   navBox.children().eq(5).on('click', function(){
     navScroll(faq);
   });
-
   function navScroll(object) {
     winWidth = $(window).width();
     objectPosition = object.offset().top;
@@ -67,3 +64,8 @@ $(function () {
     $("html,body").animate({scrollTop: objectPosition-'154'},1000);
   }
 });
+
+
+
+
+

@@ -1,8 +1,5 @@
 $(function () {
   winWidth = $(window).width();
-  $(window).on('resize', function() {
-    winWidth = $(window).width();
-  });
 
   // .mvの動き
   var mvImg1 = $('#first_img'),
@@ -21,17 +18,76 @@ $(function () {
     }
   },8000);
 
-  // .slickの動き
-  var slideItems = $('#slide_items'),
-  elementWidth = slideItems.children().width();
-  var resizedSlick = null;
+  // .storyの動き
+  var storyButton = $('.story__left'),
+  beforeImg = $('#before_img'),
+  afterImg = $('#after_img'),
+  storyButtonText, storyButtonChange, bgImg, imgHeight,
+  cancelFlagStory = 0, storyCheckFrag = 0;
+
+  var resizedStory = null;
   $(window).on('resize', function() {
-    clearTimeout( resizedSlick );
-    resizedSlick = setTimeout(function() {
-      elementWidth = slideItems.children().width();
+    clearTimeout( resizedStory );
+    resizedStory = setTimeout(function() {
+      if (winWidth == $(window).width()) {
+        return;
+      }
+      winWidth = $(window).width();
+      if (winWidth <= 900 && storyCheckFrag == 0) {
+        window.location.reload(true);
+      }
+      if (winWidth >= 900 && storyCheckFrag ==1){
+        window.location.reload(true);
+      }
     });
   });
+
+  if (winWidth <= 900) {
+    storyButtonText = $('.story__left-button'),
+    storyButtonChange = storyButtonText.find('span'),
+    bgImg = $('.story__left-background img'),
+    imgHeight = beforeImg.height(),
+    storyCheckFrag = 1;
+
+    bgImg.css('height',imgHeight);
+    storyButtonText.css('marginLeft','10vw');
+
+    storyButton.on('click',function(){
+      if (cancelFlagStory == 0) {
+        cancelFlagStory =1;
+        if (beforeImg.css('display') == 'none') {
+          setTimeout(function(){
+            imgHeight = beforeImg.height();
+            bgImg.css('height',imgHeight);
+            storyButtonText.css('marginLeft','10vw');
+          },300);
+          afterImg.addClass('story__left-hide').fadeOut(300);
+          beforeImg.removeClass('story__left-hide').fadeIn(600);
+          storyButtonChange.text("Before");
+          setTimeout(function(){
+            cancelFlagStory =0;
+          },650);
+        }if(afterImg.css('display') == 'none'){
+          setTimeout(function(){
+            imgHeight = afterImg.height();
+            bgImg.css('height',imgHeight);
+            storyButtonText.css('marginLeft','0vw');
+          },300);
+          beforeImg.addClass('story__left-hide').fadeOut(300);
+          afterImg.removeClass('story__left-hide').fadeIn(600);
+          storyButtonChange.text("After");
+          setTimeout(function(){
+            cancelFlagStory =0;
+          },650);
+        }
+      }
+    });
+  }
+
+  // .slickの動き
+  var slideItems = $('#slide_items');
   setInterval(function(){
+    elementWidth = slideItems.children().width();
     flowWidth = elementWidth * 5;
     slideItems.animate({'marginLeft': - flowWidth},
     65000, 'linear',

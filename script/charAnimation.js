@@ -2,7 +2,7 @@ $(function(){
   var winHeight = $(window).height(),
   winWidth = $(window).width(),
   scroll,runPositon,
-  storyTitle = $('#fadein_title_story'),
+  storyTitle = $('.fadein_title_story'),
   sceneTitle = $('#fadein_title_scene'),
   productTitle = $('#fadein_title_product'),
   assesmentTitle = $('#fadein_title_assessment'),
@@ -100,12 +100,12 @@ $(function(){
       for (var i = 5; i < 7; i++) {
         assesmentContent.children().eq(i).fadeOut(150*i).removeClass('show');
       }
-      assessmentButton.css({'transform':'rotate(0deg)','transition':'1s'});
+      assessmentButton.children('i').css({'transform':'rotate(0deg)','transition':'1s'});
     }else {
       for (var i = 5; i < 7; i++) {
         assesmentContent.children().eq(i).fadeIn(150*i).addClass('show');
       }
-      assessmentButton.css({'transform':'rotate(180deg)','transition':'1s'});
+      assessmentButton.children('i').css({'transform':'rotate(180deg)','transition':'500ms'});
     }
   });
 });
