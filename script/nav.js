@@ -1,7 +1,10 @@
 $(function () {
   var winWidth = $(window).width(),
   navBox = $('#header_menu'),
-  story = $('#fadein_title_story'),
+  story = $('.story_pc_title');
+  if (winWidth<=900) {
+    story = $('.story_phone_title');
+  }
   scene = $('#fadein_title_scene'),
   product = $('#fadein_title_product'),
   assessment = $('#fadein_title_assessment'),
@@ -11,6 +14,11 @@ $(function () {
     clearTimeout( resizeNav );
     resizeNav = setTimeout(function(){
       winWidth = $(window).width();
+
+      story = $('.story_pc_title');
+      if (winWidth<=900) {
+        story = $('.story_phone_title');
+      }
     });
   });
   $('.nav-btn').on('click',function(){
@@ -61,11 +69,6 @@ $(function () {
         $('header').css('opacity','0.9');
       }
     }
-    $("html,body").animate({scrollTop: objectPosition-'154'},1000);
+    $("html,body").animate({scrollTop: objectPosition-'200'},1000);
   }
 });
-
-
-
-
-
