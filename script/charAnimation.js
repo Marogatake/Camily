@@ -1,87 +1,126 @@
-$(function () {
-  var winWidth = $(window).width(),
-  navBox = $('#header_menu'),
-  story = $('#story-title-pc'),
-  scene = $('#scene-title-pc');
+$(function(){
+  var winHeight = $(window).height(),
+  winWidth = $(window).width(),
+  scroll,runPositon,
+  storyTitle = $('#story-title-pc'),
+  sceneTitle = $('#scene-title-pc');
   if (winWidth<=900) {
-    story = $('#story-title-phone');
-    scene = $('#scene-title-phone');
+    storyTitle = $('#story-title-phone');
+    sceneTitle = $('#scene-title-phone');
   }
-  product = $('#product-title'),
-  assessment = $('#assessment-title'),
-  faq = $('#faq-title');
-  var resizeNav = null;
-  $(window).on('resize',function(){
-    clearTimeout( resizeNav );
-    resizeNav = setTimeout(function(){
-      winWidth = $(window).width();
+  productTitle = $('#product-title'),
+  assesmentTitle = $('#assessment-title'),
+  faqTitle = $('#faq-title'),
+  storyText = $('#fadein_text_story'),
+  sceneText = $('#fadein_text_scene'),
+  storyTitlePosition = storyTitle.offset().top + storyTitle.height() *0.5,
+  scenePosition = sceneTitle.offset().top + sceneTitle.height() *0.5,
+  productPosition = productTitle.offset().top + productTitle.height() *0.5,
+  assesmentPosition = assesmentTitle.offset().top + assesmentTitle.height() *0.5,
+  faqPosition = faqTitle.offset().top + faqTitle.height() *0.5;
 
-      story = $('#story-title-pc'),
-      scene = $('#scene-title-pc');
+  var resizeChar = null;
+  $(window).on('resize',function(){
+    clearTimeout( resizeChar );
+    resizeChar = setTimeout(function() {
+      winWidth = $(window).width(),
+      winHeight = $(window).height();
+
+      storyTitle = $('#story-title-pc'),
+      sceneTitle = $('#scene-title-pc');
       if (winWidth<=900) {
-        story = $('#story-title-phone');
-        scene = $('#scene-title-phone');
+        storyTitle = $('#story-title-phone');
+        sceneTitle = $('#scene-title-phone');
+      }
+      storyTitlePosition = storyTitle.offset().top + storyTitle.height() *0.5;
+      scenePosition = sceneTitle.offset().top + sceneTitle.height() *0.5;
+    });
+  });
+
+  // 初期設定
+  storyText.add(sceneText).css({'opacity':'0','marginLeft':'-15px'});
+  resetChar($('#story-title-pc'));
+  resetChar($('#scene-title-pc'));
+  resetChar($('#story-title-phone'));
+  resetChar($('#scene-title-phone'));
+  resetChar(productTitle);
+  resetChar(assesmentTitle);
+  resetChar(faqTitle);
+
+  var scrollChar = null;
+  $(window).on('scroll',function() {
+    clearTimeout( scrollChar );
+    scrollChar = setTimeout(function() {
+      scroll = $(window).scrollTop();
+      runPositon = scroll + winHeight * 0.65;
+      if ( runPositon >= storyTitlePosition) {
+        if (900 < winWidth) {
+          setTimeout(function(){
+            charOneByOne(storyTitle);
+            storyText.animate({'opacity':'1','marginLeft':'0'},800, 'linear', function(){
+              // $('#before_img').animate({'width':'20.43vw'},1300);
+              // $('#after_img').animate({'width':'29.4vw'},1300);
+            });
+          },100);
+        }
+        else if (winWidth <= 900) {
+          setTimeout(function(){
+            charOneByOne(storyTitle);
+            storyText.animate({'opacity':'1','marginLeft':'0'},800);
+          },100);
+        }
+      }
+      if ( runPositon >= scenePosition) {
+        setTimeout(function(){
+          charOneByOne(sceneTitle);
+          sceneText.animate({'opacity':'1','marginLeft':'0'},800);
+        },100);
+      }
+      if ( runPositon >= productPosition) {
+        charOneByOne(productTitle);
+      }
+      if ( runPositon >= assesmentPosition) {
+        charOneByOne(assesmentTitle);
+      }
+      if ( runPositon >= faqPosition) {
+        charOneByOne(faqTitle);
       }
     });
   });
-  $('.nav-btn').on('click',function(){
-    if (winWidth<=800) {
-      if( $(this).hasClass('active') ){
-        $(this).removeClass('active');
-        $('.header__right').addClass('close').removeClass('open');
-        $("body").css('overflow','auto');
-        $('header').css('opacity','0.8');
-      }
-      else {
-        $(this).addClass('active');
-        $('.header__right').addClass('open').removeClass('close');
-        $("body").css('overflow','hidden');
-        $('header').css('opacity','0.9');
-      }
-    }
-  });
-  navBox.children().eq(0).on('click', function(){
-    if (winWidth >= 1250) {
-      navScroll(story, 210);
-    }else if (winWidth < 1250 && winWidth >= 900) {
-      navScroll(story, 150);
-    }else {
-      navScroll(story, 110);
-    }
-  });
-  navBox.children().eq(1).on('click', function(){
-    if (winWidth >= 900) {
-      navScroll(scene, 220);
-    }else {
-      navScroll(scene, 100);
-    }
-  });
-  navBox.children().eq(2).on('click', function(){
-    navScroll(product, 154);
-  });
-  navBox.children().eq(4).on('click', function(){
-    navScroll(assessment, 130);
-  });
-  navBox.children().eq(5).on('click', function(){
-    navScroll(faq, 120);
-  });
-  function navScroll(object, space) {
-    winWidth = $(window).width();
-    objectPosition = object.offset().top;
-    if (winWidth<=800) {
-      if( $('.nav-btn').hasClass('active') ){
-        $('.nav-btn').removeClass('active');
-        $('.header__right').addClass('close').removeClass('open');
-        $("body").css('overflow','auto');
-        $('header').css('opacity','0.8');
-      }
-      else {
-        $('.nav-btn').addClass('active');
-        $('.header__right').addClass('open').removeClass('close');
-        $("body").css('overflow','hidden');
-        $('header').css('opacity','0.9');
-      }
-    }
-    $("html,body").animate({scrollTop: objectPosition-space},1000);
+  function resetChar(object) {
+    var content = object.html();
+    text = $.trim(content);
+    newHtml = "";
+    txt_array= text.split('');
+    object.html('');
+    $.each(txt_array, function(index, element) {
+      object.append('<span>'+element+'</span>');
+      object.children('span').eq(index).css('opacity','0');
+    });
   }
+  function charOneByOne(object) {
+    for (var i = 0; i < object.text().length; i++) {
+      object.children('span').eq(i).animate({'opacity':'1'}, 500 * ( i + 1) );
+    }
+  }
+
+  // assessmentの動き
+  var assesmentContent = $('#assessment_content'),
+  assessmentButton = $('#assessment_button');
+  for (var i = 5; i < 7; i++) {
+    assesmentContent.children().eq(i).fadeOut(0);
+  }
+  assessmentButton.on('click', function(){
+    if (assesmentContent.children().hasClass('show')) {
+      for (var i = 5; i < 7; i++) {
+        assesmentContent.children().eq(i).fadeOut(150*i).removeClass('show');
+      }
+      assessmentButton.children('i').css({'transform':'rotate(0deg)','transition':'1s'});
+    }else {
+      for (var i = 5; i < 7; i++) {
+        assesmentContent.children().eq(i).fadeIn(150*i).addClass('show');
+      }
+      assessmentButton.children('i').css({'transform':'rotate(180deg)','transition':'500ms'});
+    }
+  });
 });

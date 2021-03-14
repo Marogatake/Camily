@@ -267,7 +267,7 @@ main{
     padding: 10px 40px!important;
   }
 }
-@media screen and (max-width: 765px){
+@media screen and (max-width: 850px){
   .mv__wrap{
     width: 100%;
     height: 100%;
@@ -277,6 +277,7 @@ main{
   }
   .mv__left{
     padding-bottom: 20px;
+    width: 95%;
   }
   .mv__right{
     width: 100%;
@@ -309,7 +310,7 @@ main{
 
 @media screen and (max-width: 450px){
   .mv__wrap{
-    width: 80%;
+    width: 100%;
   }
 }
 /* news */
@@ -381,7 +382,7 @@ main{
     padding: 10px 20px;
   }
 }
-@media screen and (max-width: 765px){
+@media screen and (max-width: 850px){
   .news__wrap{
     width: 80%;
     box-sizing: border-box;
@@ -459,7 +460,7 @@ main{
   line-height: 1;
   margin-bottom: 24.5px;
 }
-.story_phone_title{
+#story-title-phone{
   display: none;
 }
 .story__right p{
@@ -552,10 +553,10 @@ main{
     font-size: 30px;
     margin-bottom: 16.3px;
   }
-  .story_phone_title{
+  #story-title-phone{
     display: block;
   }
-  .story_pc_title{
+  #story-title-pc{
     display: none;
   }
   .story__right p{
@@ -661,7 +662,7 @@ main{
     box-sizing: border-box;
     flex-direction: column;
     /* text-align: center; */
-    padding-left: 17.78vw;
+    padding-left: 30px;
     padding-right: 30px;
   }
   .scene__wrap h2{
@@ -1824,4 +1825,58 @@ footer img{
   font-weight: normal;
 }
 
+}
+
+/* n */
+@media screen and (max-width: 900px){
+  .scene__wrap h2{
+    display: none;
+  }
+  #scene-title-phone{
+    font-size: 30px;
+   text-align: center;
+   padding: 30px 0;
+   background-color: #fff;
+  }
+  .scene__wrap p{
+    padding: 0!important;
+  }
+}
+@media screen and (min-width: 900px){
+  #fadein_title_scenepc{
+    display: none;
+  }
+}
+@media screen and (max-width: 530px){
+  .news__content a{
+    display: block;
+  }
+}
+@media screen and (max-width: 959px){
+  .mv__left{
+    width: 45%;
+  }
+}
+@media screen and (max-width: 850px){
+  .mv__left{
+    width: 95%;
+    margin: auto;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1530px){
+  .product__top-text h3 br{
+    display: none;
+  }
+
+  .product__top-text br{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1110px){
+  .mv__left-text{
+    padding: 0 20px;
+  }
 }
