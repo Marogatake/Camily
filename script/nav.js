@@ -1,23 +1,26 @@
 $(function () {
   var winWidth = $(window).width(),
   navBox = $('#header_menu'),
-  story = $('.story_pc_title');
+  story = $('#story-title-pc'),
+  scene = $('#scene-title-pc');
   if (winWidth<=900) {
-    story = $('.story_phone_title');
+    story = $('#story-title-phone');
+    scene = $('#scene-title-phone');
   }
-  scene = $('#fadein_title_scene'),
-  product = $('#fadein_title_product'),
-  assessment = $('#fadein_title_assessment'),
-  faq = $('#fadein_title_faq');
+  product = $('#product-title'),
+  assessment = $('#assessment-title'),
+  faq = $('#faq-title');
   var resizeNav = null;
   $(window).on('resize',function(){
     clearTimeout( resizeNav );
     resizeNav = setTimeout(function(){
       winWidth = $(window).width();
 
-      story = $('.story_pc_title');
+      story = $('#story-title-pc'),
+      scene = $('#scene-title-pc');
       if (winWidth<=900) {
-        story = $('.story_phone_title');
+        story = $('#story-title-phone');
+        scene = $('#scene-title-phone');
       }
     });
   });
@@ -38,21 +41,31 @@ $(function () {
     }
   });
   navBox.children().eq(0).on('click', function(){
-    navScroll(story);
+    if (winWidth >= 1250) {
+      navScroll(story, 210);
+    }else if (winWidth < 1250 && winWidth >= 900) {
+      navScroll(story, 150);
+    }else {
+      navScroll(story, 110);
+    }
   });
   navBox.children().eq(1).on('click', function(){
-    navScroll(scene);
+    if (winWidth >= 900) {
+      navScroll(scene, 220);
+    }else {
+      navScroll(scene, 100);
+    }
   });
   navBox.children().eq(2).on('click', function(){
-    navScroll(product);
+    navScroll(product, 154);
   });
   navBox.children().eq(4).on('click', function(){
-    navScroll(assessment);
+    navScroll(assessment, 130);
   });
   navBox.children().eq(5).on('click', function(){
-    navScroll(faq);
+    navScroll(faq, 120);
   });
-  function navScroll(object) {
+  function navScroll(object, space) {
     winWidth = $(window).width();
     objectPosition = object.offset().top;
     if (winWidth<=800) {
@@ -69,6 +82,6 @@ $(function () {
         $('header').css('opacity','0.9');
       }
     }
-    $("html,body").animate({scrollTop: objectPosition-'200'},1000);
+    $("html,body").animate({scrollTop: objectPosition-space},1000);
   }
 });

@@ -2,11 +2,15 @@ $(function(){
   var winHeight = $(window).height(),
   winWidth = $(window).width(),
   scroll,runPositon,
-  storyTitle = $('.fadein_title_story'),
-  sceneTitle = $('#fadein_title_scene'),
-  productTitle = $('#fadein_title_product'),
-  assesmentTitle = $('#fadein_title_assessment'),
-  faqTitle = $('#fadein_title_faq'),
+  storyTitle = $('#story-title-pc'),
+  sceneTitle = $('#scene-title-pc');
+  if (winWidth<=900) {
+    storyTitle = $('#story-title-phone');
+    sceneTitle = $('#scene-title-phone');
+  }
+  productTitle = $('#product-title'),
+  assesmentTitle = $('#assessment-title'),
+  faqTitle = $('#faq-title'),
   storyText = $('#fadein_text_story'),
   sceneText = $('#fadein_text_scene'),
   storyTitlePosition = storyTitle.offset().top + storyTitle.height() *0.5,
@@ -21,13 +25,24 @@ $(function(){
     resizeChar = setTimeout(function() {
       winWidth = $(window).width(),
       winHeight = $(window).height();
+
+      storyTitle = $('#story-title-pc'),
+      sceneTitle = $('#scene-title-pc');
+      if (winWidth<=900) {
+        storyTitle = $('#story-title-phone');
+        sceneTitle = $('#scene-title-phone');
+      }
+      storyTitlePosition = storyTitle.offset().top + storyTitle.height() *0.5;
+      scenePosition = sceneTitle.offset().top + sceneTitle.height() *0.5;
     });
   });
 
   // 初期設定
   storyText.add(sceneText).css({'opacity':'0','marginLeft':'-15px'});
-  resetChar(storyTitle);
-  resetChar(sceneTitle);
+  resetChar($('#story-title-pc'));
+  resetChar($('#scene-title-pc'));
+  resetChar($('#story-title-phone'));
+  resetChar($('#scene-title-phone'));
   resetChar(productTitle);
   resetChar(assesmentTitle);
   resetChar(faqTitle);
@@ -37,7 +52,7 @@ $(function(){
     clearTimeout( scrollChar );
     scrollChar = setTimeout(function() {
       scroll = $(window).scrollTop();
-      runPositon =scroll + winHeight * 0.65;
+      runPositon = scroll + winHeight * 0.65;
       if ( runPositon >= storyTitlePosition) {
         if (900 < winWidth) {
           setTimeout(function(){
