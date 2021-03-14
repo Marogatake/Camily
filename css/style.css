@@ -37,7 +37,7 @@ header{
 .header__right a{
   display: block;
 }
-.header__right ul li:nth-child(-n+6) a{
+.header__right ul li:nth-child(-n+7) a{
   font-size: 16px;
   color: #110603;
   font-family: 'Hind Siliguri', sans-serif;
@@ -45,15 +45,18 @@ header{
   padding: 5px 0px;
   margin-top: 28px;
 }
-.header__right ul li:nth-child(-n+6) a:hover{
+.header__right ul li:nth-child(-n+7) a:hover{
   border-bottom: 2px #110603 solid;
 }
-.header__right ul li:nth-child(7) a{
+.header__right ul li:nth-child(8) a{
   height: 25px;
   margin-top: 24px;
 }
-.header__right ul li:nth-child(7) a:hover{
+.header__right ul li:nth-child(8) a:hover{
   opacity: 0.7;
+}
+.header__right a:hover{
+  cursor: pointer;
 }
 @media screen and (max-width:1300px) {
   .header__left{
@@ -143,11 +146,11 @@ header{
     width: 100%;
     text-align: center;
   }
-  .header__right ul li:nth-child(-n+6) a{
+  .header__right ul li:nth-child(-n+7) a{
     font-weight: bold;
     font-size: 20px;
   }
-  .header__right ul li:nth-child(-n+6) a:hover{
+  .header__right ul li:nth-child(-n+7) a:hover{
     border-bottom: 0;
   }
 }
@@ -239,7 +242,8 @@ main{
     padding-right: 3.2vw;
   }
   .mv__left-text h2{
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 180%;
     margin-bottom: 18.5px;
     margin-left: -15px;
   }
@@ -263,7 +267,7 @@ main{
     padding: 10px 40px!important;
   }
 }
-@media screen and (max-width: 765px){
+@media screen and (max-width: 850px){
   .mv__wrap{
     width: 100%;
     height: 100%;
@@ -273,6 +277,7 @@ main{
   }
   .mv__left{
     padding-bottom: 20px;
+    width: 95%!important;
   }
   .mv__right{
     width: 100%;
@@ -305,7 +310,7 @@ main{
 
 @media screen and (max-width: 450px){
   .mv__wrap{
-    width: 80%;
+    width: 100%;
   }
 }
 /* news */
@@ -377,7 +382,7 @@ main{
     padding: 10px 20px;
   }
 }
-@media screen and (max-width: 765px){
+@media screen and (max-width: 850px){
   .news__wrap{
     width: 80%;
     box-sizing: border-box;
@@ -401,11 +406,13 @@ main{
     text-overflow: ellipsis;
   }
 }
+
 /* story */
 .story__wrap{
   margin: 0 auto;
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+
   padding: 4.83vw 0 8vw 0;
 }
 .story__left{
@@ -439,12 +446,15 @@ main{
   padding-left: 4.72vw;
   padding-top: 3vw;
 }
-.story__right h2{
+.story__wrap h2{
   font-size: 45px;
   font-family: 'Noto Sans', sans-serif;
   letter-spacing: 0.1em;
   line-height: 1;
   margin-bottom: 24.5px;
+}
+#story-title-phone{
+  display: none;
 }
 .story__right p{
   font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
@@ -464,7 +474,7 @@ main{
     width: 34%;
     margin-left: 6.6vw;
   }
-  .story__right h2{
+  .story__wrap h2{
     font-size: 30px;
     margin-bottom: 16.3px;
   }
@@ -483,41 +493,48 @@ main{
   }
   .story__left{
     order: 2;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     padding: 0;
-    margin: 20px auto 0;
+    margin: 20px auto 20px;
     width: 85%;
-    height: 27vw;
+    /* height: 27vw; */
   }
   .story__left-small{
     padding-right: 15px;
-    width: 30%;
+    width: 50%;
   }
   .story__left-big{
     padding-left: 15px;
-    width: 55%;
+    width: 80%;
   }
   .story__left-arrow{
     text-align: center;
   }
   .story__left-arrow img:nth-child(1){
-    display: none;
+    /* display: none; */
   }
   .story__left-arrow img:nth-child(2){
-    display: block;
+    /* display: block; */
     width: 70%;
   }
   .story__right{
-    order: 1;
+    order: 3;
     padding: 0;
     text-align:  left;
     width: 85%;
     margin: 0 auto;
   }
-  .story__right h2{
+  .story__wrap h2{
+    order: 1;
     font-size: 30px;
     margin-bottom: 16.3px;
+  }
+  #story-title-phone{
+    display: block;
+  }
+  #story-title-pc{
+    display: none;
   }
   .story__right p{
     font-size: 15px;
@@ -622,7 +639,7 @@ main{
     box-sizing: border-box;
     flex-direction: column;
     /* text-align: center; */
-    padding-left: 17.78vw;
+    padding-left: 30px;
     padding-right: 30px;
   }
   .scene__wrap h2{
@@ -1189,12 +1206,6 @@ main{
   letter-spacing: 0.1em;
   display: inline;
 }
-.assessment__header .fa-stack{
-  margin-top: -15px;
-  font-size:15px;
-  margin-left: 10px;
-  cursor: pointer;
-}
 .assessment__header p{
   font-size: 21.4px;
   font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
@@ -1217,7 +1228,27 @@ main{
   line-height: 25px;
   padding-bottom: 25px;
   list-style: decimal;
+}
+#assessment_button{
+  font-size:22px;
+  margin-left: 10px;
+  margin: 20px auto 0;
+  padding: 12px;
+  display: block;
+  width: 160px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px #969696 solid;
+  background: #969696;
+  color: #1d1a19;
   font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+#assessment_button i{
+  color: #1d1a19;
+}
+#assessment_button:hover{
+  background: #beb9b9;
+  border: 1px #beb9b9 solid;
 }
 @media screen and (max-width: 1200px){
   .assessment__header h2{
@@ -1351,7 +1382,7 @@ main{
   padding-left: 52px;
   width: 350px;
 }
-/* .faq__wrap li:nth-of-type(4){ 
+/* .faq__wrap li:nth-of-type(4){
   padding-left: 52px;
   margin-left: 20px;
   width: 350px;
@@ -1530,6 +1561,116 @@ footer img{
   border-bottom: 1px solid #d8cab9;
   margin-bottom: 40px;
 }
+
+.underContent {
+  width: 92%;
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
+.underh2 {
+font-size: 32px;
+font-family: 'Noto Sans', sans-serif;
+letter-spacing: 0.1em;
+line-height: 1;
+margin-bottom: 15px;
+padding: 15px;
+border-bottom: 1px solid #110603;
+}
+
+/* [sp] textImgBox092
+----------------------------------------------------------*/
+.textImgBox092 {
+  padding-bottom:4%;
+  overflow:hidden;
+  margin-bottom:8%;
+  border-bottom:dotted 1px #333;
+}
+.textImgBox092:last {
+  padding-bottom:4%;
+  overflow:hidden;
+  border-bottom:1px dotted #333;
+  margin-bottom:8%;
+}
+.textImgBox092 .photo {
+  padding-bottom:4%;
+  text-align:center;
+}
+.textImgBox092 .photo img {
+  width:100%;
+}
+
+.textImgBox092 .box {
+}
+.textImgBox092 .box p {
+  line-height:200%;
+  font-size:14px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.textImgBox092 p.date {
+  padding:2px 10px;
+  background:#ceb694;
+  line-height:30px;
+  color:#fff;
+  display:inline-block;
+  margin-bottom:2%;
+  font-size: 12px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.textImgBox092 .box p.title {
+  padding-bottom:10px;
+  font-size:20px;
+  font-weight:bold;
+  line-height:1.4;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+.textImgBox092 .box p.sub {
+  padding-bottom:10px;
+  font-style:italic;
+}
+
+footer img{
+  width: 25%;
+}
+
+.shoplistTitle {
+  font-size: 20px;
+  border-bottom: 1px solid #ceb694;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  margin-top: 40px;
+}
+
+.shoplistBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.shoplistBox li {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 10px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  list-style-position: inside;
+}
+
+.shoplistTitleSub {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.spNone {
+  display: none;
+}
+
 }
 
 
@@ -1547,4 +1688,174 @@ footer img{
   margin-bottom: 40px;
 }
 
+/* textImgBox092
+----------------------------------------------------------*/
+.textImgBox092 {
+  overflow:hidden;
+  padding:20px 0;
+  border-bottom:dotted 1px #333;
+}
+.textImgBox092:last-child {
+  border-bottom:none;
+}
+.textImgBox092 .photo {
+  float:left;
+  width:30%;
+  text-align:center;
+}
+.textImgBox092 .photo img {
+  width:auto;
+  max-width:100%;
+}
+.textImgBox092 .box {
+  float:right;
+  width:67%;
+  overflow:hidden;
+}
+.textImgBox092 .box p.date {
+  padding:4px 6px;
+  background:#ceb694;
+  text-align:center;
+  width:80px;
+  color:#fff;
+  float:left;
+  font-size: 12px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+.textImgBox092 .newsText p {
+  line-height: 180%;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.newsText {
+  clear:both;
+}
+
+.textImgBox092 .box p.title {
+  float:left;
+  font-size:20px;
+  font-weight:bold;
+  margin-left:10px;
+  width: 640px;
+  margin-bottom: 10px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+.textImgBox092 .box p.text a {
+  color:#333 !important;
+}
+
+.underContent {
+  width: 1160px;
+  margin: 0 auto;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.underh2 {
+font-size: 45px;
+font-family: 'Noto Sans', sans-serif;
+letter-spacing: 0.1em;
+line-height: 1;
+margin-bottom: 15px;
+padding: 15px;
+border-bottom: 1px solid #110603;
+}
+
+footer img{
+  width: 11%;
+}
+
+.shoplistTitle {
+  font-size: 20px;
+  border-bottom: 1px solid #ceb694;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  margin-top: 60px;
+}
+
+.shoplistBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.shoplistBox li {
+  box-sizing: border-box;
+  width: 33%;
+  margin-bottom: 10px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  list-style-position: inside;
+}
+
+.shoplistTitleSub {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.mainCatchFont {
+  font-size: 28px !important;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-weight: normal;
+}
+
+}
+
+
+
+/* n */
+@media screen and (max-width: 900px){
+  .scene__wrap h2{
+    display: none;
+  }
+  #scene-title-phone{
+    font-size: 30px;
+   text-align: center;
+   padding: 30px 0;
+   background-color: #fff;
+  }
+  .scene__wrap p{
+    padding: 0!important;
+  }
+}
+@media screen and (min-width: 900px){
+  #fadein_title_scenepc{
+    display: none;
+  }
+}
+@media screen and (max-width: 530px){
+  .news__content a{
+    display: block;
+  }
+}
+@media screen and (max-width: 959px){
+  .mv__left{
+    width: 45%;
+  }
+}
+@media screen and (max-width: 765px){
+  .mv__left{
+    width: 95%;
+    margin: auto;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1530px){
+  .product__top-text h3 br{
+    display: none;
+  }
+
+  .product__top-text br{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1110px){
+  .mv__left-text{
+    padding: 0 20px;
+  }
 }
