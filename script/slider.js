@@ -66,11 +66,20 @@ $(function () {
   });
   $(window).scrollLeft(0);
 
+  var observeFrag = 0;
   errorObserver = setInterval(function(){
-    if ($('#slider li').length != elementQuantity && cancelFlag == 0) {
-      window.location.reload(true);
+    if (cancelFlag == 0) {
+      if ($('#slider li').length != elementQuantity) {
+        window.location.reload(true);
+      }
+      if (observeFrag == 10) {
+        window.location.reload(true);
+      }
+      observeFrag +=1;
     }
+
   },1000);
+
 
   $('#prev').on('click', function(){
     PrevSlider();
