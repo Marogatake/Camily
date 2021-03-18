@@ -52,34 +52,52 @@ $(function () {
     });
   });
 
+  var observeFrag = 0;
+  errorObserver = setInterval(function(){
+    if (cancelFlag == 0) {
+      if ($('#slider li').length != elementQuantity) {
+        window.location.reload();
+      }
+      observeFrag = 0;
+    }else if(cancelFlag == 1){
+      if (observeFrag >= 4) {
+        window.location.reload();
+      }
+      observeFrag +=1;
+    }
+  },1000);
+
   interval = setTimeout(function(){NextSlider();}, 9000);
   countdownProduct();
 
   $(window).bind("focus", function(){
     interval = setTimeout(function(){NextSlider();}, 9000);
     countdownProduct();
+    errorObserver = setInterval(function(){
+      if (cancelFlag == 0) {
+        if ($('#slider li').length != elementQuantity) {
+          window.location.reload();
+        }
+        observeFrag = 0;
+      }else if(cancelFlag == 1){
+        if (observeFrag >= 4) {
+          window.location.reload();
+        }
+        observeFrag +=1;
+      }
+    },1000);
   });
   $(window).bind("blur", function(){
     clearInterval(interval);
+    clearInterval(errorObserver);
     resetCountdown();
     cancelFlag = 0;
   });
   $(window).scrollLeft(0);
 
-  var observeFrag = 0;
-  errorObserver = setInterval(function(){
-    if (cancelFlag == 0) {
-      if ($('#slider li').length != elementQuantity) {
-        window.location.reload(true);
-      }
-      if (observeFrag == 10) {
-        window.location.reload(true);
-      }
-      observeFrag +=1;
-    }
-
-  },1000);
-
+  // setInterval(function(){
+  //   console.log(cancelFlag);
+  // },1000);
 
   $('#prev').on('click', function(){
     PrevSlider();
@@ -149,7 +167,7 @@ $(function () {
         $(this).removeAttr('id').attr('id', 'product_center');
         interval = setTimeout(function(){NextSlider();}, 9000);
         countdownProduct();
-        setTimeout(function(){cancelFlag = 0;},1200);
+        setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1200);
       });
       setTimeout(function(){
         if (elementQuantity <= 3) {
@@ -160,15 +178,15 @@ $(function () {
           });
         }else if (elementQuantity > 3) {
           // 商品数が３つを越えるときに実行される
-          // element[4].animate({'left': winWidth*0.95},0.35*elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
-          // function(){
-            // $(this).removeAttr('id').attr('id', 'product_right');
+          element[4].animate({'left': winWidth*0.95},0.35*elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
+          function(){
+            $(this).removeAttr('id').attr('id', 'product_right');
             // element[5](5つ目の商品)以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
-            // element[5].removeAttr('id').attr('id', 'product_add1');
-            // element[6].removeAttr('id').attr('id', 'product_add2');
-            // element[7].removeAttr('id').attr('id', 'product_add3');
-            // cloneElement.removeAttr('id').attr('id', 'product_add4');
-          // });
+              // element[5].removeAttr('id').attr('id', 'product_add1');
+              // element[6].removeAttr('id').attr('id', 'product_add2');
+              // element[7].removeAttr('id').attr('id', 'product_add3');
+              // cloneElement.removeAttr('id').attr('id', 'product_add4');
+          });
         }
       }, 0.65*elementFlowWidth[2]*flowTimeGuide/winWidth);
     }
@@ -211,7 +229,7 @@ $(function () {
         $(this).removeAttr('id').attr('id', 'product_right');
         interval = setTimeout(function(){NextSlider();}, 9000);
         countdownProduct();
-        setTimeout(function(){cancelFlag = 0;},1200);
+        setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1200);
       });
       element[3].animate({'left':winWidth},elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
       function(){
@@ -223,9 +241,9 @@ $(function () {
           $(this).removeAttr('id').attr('id', 'product_add1');
 
           // 最後を除く3番目以降の要素に対して自身の一個後ろのidに書き換える(以下は商品数7のときの例)
-          // element[4].removeAttr('id').attr('id', 'product_add2');
-          // element[5].removeAttr('id').attr('id', 'product_add3');
-          // element[6].removeAttr('id').attr('id', 'product_add4');
+            // element[4].removeAttr('id').attr('id', 'product_add2');
+            // element[5].removeAttr('id').attr('id', 'product_add3');
+            // element[6].removeAttr('id').attr('id', 'product_add4');
         }
       });
       setTimeout(function(){
@@ -319,40 +337,39 @@ $(function () {
       element[1].clone().removeAttr('id').attr('id', 'clone').appendTo(sliderBox).css('left','100vw');
       cloneElement = $('#clone');
 
-      element[1].animate({'left':- elementWidth[0]},elementFlowWidth[0]*flowTimeGuide/winWidth,'linear',
+      element[1].animate({'left':- elementWidth[0]},elementFlowWidth[0]*flowTimeGuide/elementFlowWidth[2],'linear',
       function(){
         $(this).remove();
       });
-      element[2].animate({'left': winWidth*0.05-elementWidth[1]},0.12*elementFlowWidth[1]*flowTimeGuide/winWidth + 0.88*elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
+      element[2].animate({'left': winWidth*0.05-elementWidth[1]},0.15*elementFlowWidth[1]*flowTimeGuide/elementFlowWidth[2] + 0.85*elementFlowWidth[2]*flowTimeGuide/elementFlowWidth[2],'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_left');
       });
-      element[3].animate({'left': winWidth*0.5 - elementWidth[2]},elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
+      element[3].animate({'left': winWidth*0.5 - elementWidth[2]},flowTimeGuide,'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_center');
+        defer.resolve();
       });
       setTimeout(function(){
         if (elementQuantity <= 3) {
           // 商品数が３つのときに実行される
-          cloneElement.animate({'left': winWidth*0.95},0.35*elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
+          cloneElement.animate({'left': winWidth*0.95},0.3*flowTimeGuide,'linear',
           function(){
             $(this).removeAttr('id').attr('id', 'product_right');
-            defer.resolve();
           });
         }else if (elementQuantity > 3) {
           // 商品数が３つを越えるときに実行される
-          // element[4].animate({'left': winWidth*0.95},0.35*elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
-          // function(){
-          //     $(this).removeAttr('id').attr('id', 'product_right');
-          //     // element5以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
-          //     element[5].removeAttr('id').attr('id', 'product_add1');
-          //     element[6].removeAttr('id').attr('id', 'product_add2');
-          //     element[7].removeAttr('id').attr('id', 'product_add3');
-          //     cloneElement.removeAttr('id').attr('id', 'product_add4');
-          //     defer.resolve();
-          // });
+          element[4].animate({'left': winWidth*0.95},0.3*flowTimeGuide,'linear',
+          function(){
+              $(this).removeAttr('id').attr('id', 'product_right');
+              // element5以降のidを手前の要素のidに書き換える。cloneElementは最後の要素のidにする。
+                // element[5].removeAttr('id').attr('id', 'product_add1');
+                // element[6].removeAttr('id').attr('id', 'product_add2');
+                // element[7].removeAttr('id').attr('id', 'product_add3');
+                // cloneElement.removeAttr('id').attr('id', 'product_add4');
+          });
         }
-      }, 0.65*elementFlowWidth[2]*flowTimeGuide/winWidth);
+      }, 0.6*flowTimeGuide);
       return defer.promise();
     }
  }
@@ -368,7 +385,7 @@ $(function () {
       if (winWidth <= 1320) {
         elementWidth[0] = elementWidth[0]*0.5;
       }
-      elementFlowWidth = [winWidth*0.5 - elementWidth[0] - elementPosition[0], winWidth*0.89 - elementPosition[1], winWidth*0.11];
+      elementFlowWidth = [winWidth*0.5 - elementWidth[0] - elementPosition[0], winWidth*0.95 - elementPosition[1], winWidth*0.05];
 
       cloneWidth = parseInt(element[elementQuantity].css('width'), 10);
       element[elementQuantity].clone().removeAttr('id').attr('id', 'clone')
@@ -376,15 +393,16 @@ $(function () {
       cloneElement = $('#clone'),
       element[elementQuantity].remove();
 
-      element[1].animate({'left': winWidth*0.5 - elementWidth[0]},0.12*elementFlowWidth[0]*flowTimeGuide/winWidth+0.88*elementFlowWidth[1]*flowTimeGuide/winWidth,'linear',
+      element[1].animate({'left': winWidth*0.5 - elementWidth[0]},0.15*elementFlowWidth[0]*flowTimeGuide/elementFlowWidth[1]+0.85*elementFlowWidth[1]*flowTimeGuide/elementFlowWidth[1],'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_center');
       });
-      element[2].animate({'left':winWidth*0.95},elementFlowWidth[1]*flowTimeGuide/winWidth,'linear',
+      element[2].animate({'left':winWidth*0.95},flowTimeGuide,'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_right');
+        defer.resolve();
       });
-      element[3].animate({'left':winWidth},elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
+      element[3].animate({'left':winWidth},elementFlowWidth[2]*flowTimeGuide/elementFlowWidth[1],'linear',
       function(){
         if (elementQuantity <=3) {
           // 商品数が３つのときに実行される
@@ -394,18 +412,17 @@ $(function () {
           $(this).removeAttr('id').attr('id', 'product_add1');
 
           // 最後を除く3番目以降の要素に対して自身の一個後ろのidに書き換える(以下は商品数7のときの例)
-          // element[4].removeAttr('id').attr('id', 'product_add2');
-          // element[5].removeAttr('id').attr('id', 'product_add3');
-          // element[6].removeAttr('id').attr('id', 'product_add4');
+            // element[4].removeAttr('id').attr('id', 'product_add2');
+            // element[5].removeAttr('id').attr('id', 'product_add3');
+            // element[6].removeAttr('id').attr('id', 'product_add4');
         }
       });
       setTimeout(function(){
-        cloneElement.animate({'left': winWidth*0.05-cloneWidth},0.35*elementFlowWidth[1]*flowTimeGuide/winWidth,'linear',
+        cloneElement.animate({'left': winWidth*0.05-cloneWidth},0.3*flowTimeGuide,'linear',
         function(){
           $(this).removeAttr('id').attr('id', 'product_left');
-          defer.resolve();
         });
-      }, 0.65*elementFlowWidth[1]*flowTimeGuide/winWidth);
+      }, 0.6*flowTimeGuide);
       return defer.promise();
     }
  }
@@ -418,7 +435,7 @@ $(function () {
      clickedElement = clickNum.data('number');
      centerElementNumber = sliderBox.children('li').eq('1').data('number');
      numberDifference = clickedElement - centerElementNumber;
-     flowTimeGuide = 500,textChangeTime = 600;
+     flowTimeGuide = 380,textChangeTime = 600;
 
      if (5 < numberDifference) {
        var deferred = $.Deferred().resolve(),
@@ -426,7 +443,7 @@ $(function () {
 
        setTimeout(function(){
          textChangeAct(clickedElement,textChangeTime);
-       },flowTimeGuide*flowTimes-textChangeTime*1.2);
+       },flowTimeGuide*flowTimes-textChangeTime*0.7);
 
        for(var i = 0; i < flowTimes; i++){
          deferred = deferred.then(flowToPrev(flowTimeGuide));
@@ -434,7 +451,7 @@ $(function () {
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
-         setTimeout(function(){cancelFlag = 0;},1500);
+         setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1300);
        });
      }
      else if (0 < numberDifference && numberDifference  <= 5) {
@@ -443,7 +460,7 @@ $(function () {
 
        setTimeout(function(){
          textChangeAct(clickedElement,textChangeTime);
-       },flowTimeGuide*flowTimes-textChangeTime*1.2);
+       },flowTimeGuide*flowTimes-textChangeTime*0.7);
 
        for(var i = 0; i < flowTimes; i++){
          deferred = deferred.then(flowToNext(flowTimeGuide));
@@ -451,7 +468,7 @@ $(function () {
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
-         setTimeout(function(){cancelFlag = 0;},1500);
+         setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1300);
        });
      }
      else if (numberDifference == 0) {
@@ -467,7 +484,7 @@ $(function () {
 
        setTimeout(function(){
          textChangeAct(clickedElement,textChangeTime);
-       },flowTimeGuide*flowTimes-textChangeTime*1.2);
+       },flowTimeGuide*flowTimes-textChangeTime*0.7);
 
        for(var i = 0; i < flowTimes; i++){
          deferred = deferred.then(flowToPrev(flowTimeGuide));
@@ -475,7 +492,7 @@ $(function () {
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
-         setTimeout(function(){cancelFlag = 0;},1500);
+         setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1300);
        });
      }
      else if (numberDifference < -5) {
@@ -484,7 +501,7 @@ $(function () {
 
        setTimeout(function(){
          textChangeAct(clickedElement,textChangeTime);
-       },flowTimeGuide*flowTimes-textChangeTime*1.2);
+       },flowTimeGuide*flowTimes-textChangeTime*0.7);
 
        for(var i = 0; i < flowTimes; i++){
          deferred = deferred.then(flowToNext(flowTimeGuide));
@@ -492,7 +509,7 @@ $(function () {
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
-         setTimeout(function(){cancelFlag = 0;},1500);
+         setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1300);
        });
      }
    }
