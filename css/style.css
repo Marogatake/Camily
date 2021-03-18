@@ -723,11 +723,12 @@ main{
   width: 22.89vw;
 } */
 .product__top-image ul li:nth-child(1){
-  left: -16%;
-  /* left: -29vw; */
+  /* 一番最後の商品の横幅 * 0.8 * -1 */
+  left: -16vw;
 }
 .product__top-image ul li:nth-child(2){
-  left: 25%;
+  /* 50vw - .slider1の横幅 */
+  left: 25vw;
 }
 .product__top-image ul li:nth-child(3){
   left: 89%;
@@ -1018,8 +1019,13 @@ main{
   .slider7{
     width: 37.66vw;
   } */
+  .product__top-image ul li:nth-child(1){
+    /* 一番最後の商品の横幅 * 0.8 * -1 */
+    left: -25.6vw;
+  }
   .product__top-image ul li:nth-child(2){
-    left: 34.64vw;
+    /* 50vw - .slider1の横幅*0.5 */
+    left: 27.5vw;
   }
   .product__top-image ul li img{
     width: 100%;
