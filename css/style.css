@@ -502,11 +502,9 @@ main{
     /* height: 27vw; */
   }
   .story__left-small{
-    padding-right: 15px;
     width: 50%;
   }
   .story__left-big{
-    padding-left: 15px;
     width: 80%;
   }
   .story__left-arrow{
