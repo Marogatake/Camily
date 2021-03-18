@@ -55,37 +55,37 @@ $(function () {
   var observeFrag = 0;
   errorObserver = setInterval(function(){
     if (cancelFlag == 0) {
+      observeFrag = 0;
       if ($('#slider li').length != elementQuantity) {
         window.location.reload();
       }
-      observeFrag = 0;
     }else if(cancelFlag == 1){
-      if (observeFrag >= 4) {
+      observeFrag +=1;
+      if (observeFrag >= 2) {
         window.location.reload();
       }
-      observeFrag +=1;
     }
-  },1000);
+  },2500);
 
   interval = setTimeout(function(){NextSlider();}, 9000);
-  countdownProduct();
+  countdownProduct($('#product_center'));
 
   $(window).bind("focus", function(){
     interval = setTimeout(function(){NextSlider();}, 9000);
-    countdownProduct();
+    countdownProduct($('#product_center'));
     errorObserver = setInterval(function(){
       if (cancelFlag == 0) {
+        observeFrag = 0;
         if ($('#slider li').length != elementQuantity) {
           window.location.reload();
         }
-        observeFrag = 0;
       }else if(cancelFlag == 1){
-        if (observeFrag >= 4) {
+        observeFrag +=1;
+        if (observeFrag >= 2) {
           window.location.reload();
         }
-        observeFrag +=1;
       }
-    },1000);
+    },2500);
   });
   $(window).bind("blur", function(){
     clearInterval(interval);
@@ -166,7 +166,7 @@ $(function () {
       function(){
         $(this).removeAttr('id').attr('id', 'product_center');
         interval = setTimeout(function(){NextSlider();}, 9000);
-        countdownProduct();
+        countdownProduct($(this));
         setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1200);
       });
       setTimeout(function(){
@@ -228,7 +228,7 @@ $(function () {
       function(){
         $(this).removeAttr('id').attr('id', 'product_right');
         interval = setTimeout(function(){NextSlider();}, 9000);
-        countdownProduct();
+        countdownProduct($(this));
         setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1200);
       });
       element[3].animate({'left':winWidth},elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
@@ -291,9 +291,9 @@ $(function () {
     }
  }
 
-  function countdownProduct() {
+  function countdownProduct(centerElement) {
     resetCountdown();
-    centerElementNumber = $('#product_center').data('number');
+    centerElementNumber = centerElement.data('number');
     productNumButton.eq(centerElementNumber).find('.chart-meter')
     .css({'transform':'rotate(360deg)','transition':'9000ms','transition-timing-function':'linear'});
     firstCount = setTimeout(function(){
@@ -348,6 +348,7 @@ $(function () {
       element[3].animate({'left': winWidth*0.5 - elementWidth[2]},flowTimeGuide,'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_center');
+        observeFrag = 0;
         defer.resolve();
       });
       setTimeout(function(){
@@ -400,6 +401,7 @@ $(function () {
       element[2].animate({'left':winWidth*0.95},flowTimeGuide,'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_right');
+        observeFrag = 0;
         defer.resolve();
       });
       element[3].animate({'left':winWidth},elementFlowWidth[2]*flowTimeGuide/elementFlowWidth[1],'linear',
@@ -450,7 +452,7 @@ $(function () {
        }
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
-         countdownProduct();
+         countdownProduct($('#product_center'));
          setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1300);
        });
      }
@@ -467,7 +469,7 @@ $(function () {
        }
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
-         countdownProduct();
+         countdownProduct($('#product_center'));
          setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1300);
        });
      }
@@ -475,7 +477,7 @@ $(function () {
        setTimeout(function(){
          cancelFlag = 0;
          interval = setTimeout(function(){NextSlider();}, 9000);
-         countdownProduct();
+         countdownProduct($('#product_center'));
        },200)
      }
      else if (-5 <= numberDifference && numberDifference < 0) {
@@ -491,7 +493,7 @@ $(function () {
        }
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
-         countdownProduct();
+         countdownProduct($('#product_center'));
          setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1300);
        });
      }
@@ -508,7 +510,7 @@ $(function () {
        }
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
-         countdownProduct();
+         countdownProduct($('#product_center'));
          setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1300);
        });
      }
