@@ -66,6 +66,12 @@ $(function () {
   });
   $(window).scrollLeft(0);
 
+  errorObserver = setInterval(function(){
+    if ($('#slider li').length != elementQuantity && cancelFlag == 0) {
+      window.location.reload(true);
+    }
+  },1000);
+
   $('#prev').on('click', function(){
     PrevSlider();
   });
@@ -419,7 +425,7 @@ $(function () {
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
-         setTimeout(function(){cancelFlag = 0;},1200);
+         setTimeout(function(){cancelFlag = 0;},1500);
        });
      }
      else if (0 < numberDifference && numberDifference  <= 5) {
@@ -436,7 +442,7 @@ $(function () {
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
-         setTimeout(function(){cancelFlag = 0;},1200);
+         setTimeout(function(){cancelFlag = 0;},1500);
        });
      }
      else if (numberDifference == 0) {
@@ -460,7 +466,7 @@ $(function () {
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
-         setTimeout(function(){cancelFlag = 0;},1200);
+         setTimeout(function(){cancelFlag = 0;},1500);
        });
      }
      else if (numberDifference < -5) {
@@ -477,7 +483,7 @@ $(function () {
        deferred.then(function(){
          interval = setTimeout(function(){NextSlider();}, 9000);
          countdownProduct();
-         setTimeout(function(){cancelFlag = 0;},1200);
+         setTimeout(function(){cancelFlag = 0;},1500);
        });
      }
    }
