@@ -2,7 +2,7 @@ $(function () {
   var winWidth = $(window).width(),
   navBox = $('#header_menu'),
   story = $('#story-title-pc'),
-  scene = $('#scene-title-pc');
+  scene = $('#slide_items');
   if (winWidth<=900) {
     story = $('#story-title-phone');
     scene = $('#scene-title-phone');
@@ -17,7 +17,7 @@ $(function () {
       winWidth = $(window).width();
 
       story = $('#story-title-pc'),
-      scene = $('#scene-title-pc');
+      scene = $('#slide_items');
       if (winWidth<=900) {
         story = $('#story-title-phone');
         scene = $('#scene-title-phone');
@@ -51,7 +51,7 @@ $(function () {
   });
   navBox.children().eq(1).on('click', function(){
     if (winWidth >= 900) {
-      navScroll(scene, 220);
+      navScroll(scene, 100);
     }else {
       navScroll(scene, 100);
     }

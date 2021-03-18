@@ -14,7 +14,7 @@ $(function(){
   storyText = $('#fadein_text_story'),
   sceneText = $('#fadein_text_scene'),
   storyTitlePosition = storyTitle.offset().top + storyTitle.height() *0.5,
-  scenePosition = sceneTitle.offset().top + sceneTitle.height() *0.5,
+  scenePosition = sceneTitle.offset().top,
   productPosition = productTitle.offset().top + productTitle.height() *0.5,
   assesmentPosition = assesmentTitle.offset().top + assesmentTitle.height() *0.5,
   faqPosition = faqTitle.offset().top + faqTitle.height() *0.5;
@@ -52,7 +52,7 @@ $(function(){
     clearTimeout( scrollChar );
     scrollChar = setTimeout(function() {
       scroll = $(window).scrollTop();
-      runPositon = scroll + winHeight * 0.65;
+      runPositon = scroll + winHeight * 0.75;
       if ( runPositon >= storyTitlePosition) {
         if (900 < winWidth) {
           setTimeout(function(){

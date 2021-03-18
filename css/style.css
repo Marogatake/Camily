@@ -723,7 +723,8 @@ main{
   width: 22.89vw;
 } */
 .product__top-image ul li:nth-child(1){
-  left: -12.8%;
+  left: -16%;
+  /* left: -29vw; */
 }
 .product__top-image ul li:nth-child(2){
   left: 25%;
@@ -829,28 +830,31 @@ main{
   width: 45px;
   line-height: 45px;
   border-radius: 50%;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: 0 2vw;
-  border: 2px solid #706e6d;
   cursor: pointer;
+}
+.product__top-button li:first-child,.product__top-button li:last-child{
+  border: 1px solid #3f434a;
 }
 /* 商品数に応じて以下の:nth-child(-n+4)を調整(要素数７のときは-n+８) */
 .product__top-button li:nth-child(n+2):nth-child(-n+4){
-  background:linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#110603 50%,#110603 100%);
-  border: 1px solid #706e6d;
+  background:linear-gradient(90deg,#e6e7e9 0%,#e6e7e9 50%,#3f434a 50%,#3f434a 100%);
+  /* border: 1px solid #706e6d; */
 }
 .product__top-button .chart-meter{
 	content: "";
 	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
+  left: -2px;
+	top: -2px;
+	width: 49px;
+	height: 49px;
+  padding: 0px;
   border-radius: 50%;
 	transform: rotate(0deg);
 	box-sizing: border-box;
-  background:linear-gradient(90deg,transparent 0%,transparent 50%,#e6e7e9 50%,#e6e7e9 105%);
-  border: 1px solid #706e6d;
+  background:linear-gradient(90deg,transparent 0%,transparent 50%,#e6e7e9 50%,#e6e7e9 100%);
+  /* border: 1px solid #706e6d; */
 }
 .product__top-button .chart-submeter{
   content: "";
@@ -863,18 +867,19 @@ main{
   transform: rotate(0deg);
   box-sizing: border-box;
   background:linear-gradient(90deg,transparent 0%,transparent 50%,transparent 50%,transparent 100%);
-  border: 1px solid #706e6d;
+  /* border: 1px solid #706e6d; */
+  border: 1px solid #3f434a;
 }
 .product__top-button .chart-value{
   content: "";
   position: absolute;
   border-radius: 50%;
-  left: 12%;
-  top: 12%;
-  width: 76%;
-  height: 76%;
+  left: 11%;
+  top: 11%;
+  width: 78%;
+  height: 78%;
   background:#e6e7e9;
-  line-height: 34.2px;
+  line-height: 35.1px;
 }
 .product__bottom img{
   width: 100%;
@@ -1062,8 +1067,12 @@ main{
     line-height: 30px;
     margin: 0 1vw;
   }
+  .product__top-button .chart-meter{
+  	width: 34px;
+  	height: 34px;
+  }
   .product__top-button li .chart-value{
-    line-height: 22.8px;
+    line-height: 23.4px;
   }
   .product__bottom{
     margin-top: 4vw;
@@ -1239,7 +1248,7 @@ main{
   width: 160px;
   text-align: center;
   cursor: pointer;
-  border: 1px #d4d4d4 solid;
+  border: 1px #cdb799 solid;
   background: #dbdcdf;
   color: #000;
   border-radius: 10px;
@@ -1250,7 +1259,6 @@ main{
 }
 #assessment_button:hover{
   background: #d0d3d9;
-  border: 1px #d4d4d4 solid;
   color: #000;
 }
 @media screen and (max-width: 1200px){
