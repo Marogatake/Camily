@@ -158,7 +158,7 @@ $(function () {
       function(){
         $(this).remove();
       });
-      element[2].animate({'left': winWidth*0.05-elementWidth[1]},0.12*elementFlowWidth[1]*flowTimeGuide/winWidth + 0.88*elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
+      element[2].animate({'left': winWidth*0.05-elementWidth[1]},0.15*elementFlowWidth[1]*flowTimeGuide/winWidth + 0.85*elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_left');
       });
@@ -218,9 +218,9 @@ $(function () {
       setTimeout(function(){
         prevProductNum = element[1].data('number');
         textChangeAct(prevProductNum,textChangeTime);
-      },0.12*elementFlowWidth[0]*flowTimeGuide/winWidth + 0.88*elementFlowWidth[1]*flowTimeGuide/winWidth - textChangeTime*0.75);
+      },0.15*elementFlowWidth[0]*flowTimeGuide/winWidth + 0.85*elementFlowWidth[1]*flowTimeGuide/winWidth - textChangeTime*0.75);
 
-      element[1].animate({'left': winWidth*0.5 - elementWidth[0]},0.12*elementFlowWidth[0]*flowTimeGuide/winWidth+0.88*elementFlowWidth[1]*flowTimeGuide/winWidth,'linear',
+      element[1].animate({'left': winWidth*0.5 - elementWidth[0]},0.15*elementFlowWidth[0]*flowTimeGuide/winWidth+0.85*elementFlowWidth[1]*flowTimeGuide/winWidth,'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_center');
       });
