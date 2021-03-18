@@ -311,7 +311,7 @@ $(function () {
       function(){
         $(this).remove();
       });
-      element[2].animate({'left': -0.592*elementWidth[1]},flowTimeGuide,'linear',
+      element[2].animate({'left': -0.8*elementWidth[1]},flowTimeGuide,'linear',
       function(){
         $(this).removeAttr('id').attr('id', 'product_left');
       });
@@ -390,7 +390,7 @@ $(function () {
         }
       });
       setTimeout(function(){
-        cloneElement.animate({'left': -0.592*cloneWidth}, 0.5*flowTimeGuide,'linear',
+        cloneElement.animate({'left': -0.8*cloneWidth}, 0.5*flowTimeGuide,'linear',
         function(){
           $(this).removeAttr('id').attr('id', 'product_left');
           defer.resolve();
