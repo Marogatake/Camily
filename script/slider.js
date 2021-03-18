@@ -228,7 +228,7 @@ $(function () {
       function(){
         $(this).removeAttr('id').attr('id', 'product_right');
         interval = setTimeout(function(){NextSlider();}, 9000);
-        countdownProduct($(this));
+        countdownProduct(element[1]);
         setTimeout(function(){cancelFlag = 0;observeFrag = 0;},1200);
       });
       element[3].animate({'left':winWidth},elementFlowWidth[2]*flowTimeGuide/winWidth,'linear',
