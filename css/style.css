@@ -721,15 +721,15 @@ main{
   width: 22.89vw;
 } */
 .product__top-image ul li:nth-child(1){
-  /* 一番最後の商品の横幅 * 0.8 * -1 */
-  left: -16vw;
+  /* 5vw -  一番最後の商品の横幅 */
+  left: -15vw;
 }
 .product__top-image ul li:nth-child(2){
   /* 50vw - .slider1の横幅 */
   left: 25vw;
 }
 .product__top-image ul li:nth-child(3){
-  left: 89%;
+  left: 95vw;
 }
 .product__top-image ul li:nth-child(n+4){
   left: 100%;
