@@ -1095,6 +1095,18 @@ main{
   .product__top-image ul li img{
     width: 100%;
   }
+  .product__top-angle{
+    font-size: 40px;
+    height: 52.65vw;
+  }
+  .product__top-angle i:first-of-type{
+    padding:0vw 3vw 0vw 12vw;
+    line-height: 52.65vw;
+  }
+  .product__top-angle i:last-of-type{
+    padding:0vw 12vw 0vw 3vw;
+    line-height: 52.65vw;
+  }
   .product__top-text{
     order: 3;
     width: 70%;
