@@ -105,7 +105,6 @@ $(function () {
   $('#next-angle').on('click', function(){
     NextSlider();
   });
-
   $('#prev').on('click', function(){
     PrevSlider();
   });

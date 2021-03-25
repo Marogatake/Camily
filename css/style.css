@@ -754,7 +754,8 @@ main{
   width: 22.89vw;
 } */
 .product__top-image ul li:nth-child(1){
-  /* 5vw -  一番最後の商品の横幅 */
+  cursor: pointer;
+  /* ↓5vw -  一番最後の商品の横幅 */
   left: -15vw;
 }
 .product__top-image ul li:nth-child(2){
@@ -762,6 +763,7 @@ main{
   left: 25vw;
 }
 .product__top-image ul li:nth-child(3){
+  cursor: pointer;
   left: 95vw;
 }
 .product__top-image ul li:nth-child(n+4){
@@ -779,6 +781,7 @@ main{
   justify-content: space-between;
   height: 32vw;
   align-items: center;
+  z-index: 1000;
 }
 .product__top-angle i:first-of-type{
   padding:0vw 3vw 0vw 12vw;
