@@ -99,6 +99,13 @@ $(function () {
   //   console.log(cancelFlag);
   // },1000);
 
+  $('#prev-angle').on('click', function(){
+    PrevSlider();
+  });
+  $('#next-angle').on('click', function(){
+    NextSlider();
+  });
+
   $('#prev').on('click', function(){
     PrevSlider();
   });
