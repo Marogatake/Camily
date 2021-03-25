@@ -781,7 +781,7 @@ main{
   justify-content: space-between;
   height: 32vw;
   align-items: center;
-  z-index: 1000;
+  z-index: 500;
 }
 .product__top-angle i:first-of-type{
   padding:0vw 3vw 0vw 12vw;
